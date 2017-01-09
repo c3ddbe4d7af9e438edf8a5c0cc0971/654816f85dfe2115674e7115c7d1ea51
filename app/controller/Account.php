@@ -1,0 +1,33 @@
+<?php 
+/**
+* 
+*/
+class Account
+{
+	
+	public function __construct(){
+		if (isset($_SESSION['user'])) {
+			header('location:/');
+			die;
+		}
+	}
+
+	public function getLogin(){
+		return View::make('login');
+	}
+	public function postLogin(){
+		$details=Input::post(['reference_id','password']);
+		if ($user=Users::login($details)) {
+			$_SESSION['user']=json_encode($user);
+		}else{
+			header('location:/login?error=1');
+			die;
+		}
+		$user_details=Users::user_details(Users::auth()->id);
+		if($user_details['0']->completed=='1'){
+			header('location:/submit');die();
+		}
+		header('location:/');
+	}
+}
+?>
