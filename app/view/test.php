@@ -158,7 +158,7 @@ $(document).on('click','.clr',function(){
   return false;
 });
 
-$(document).ready(function() {
+/*$(document).ready(function() {
     $(document)[0].oncontextmenu = function() { return false; }
     $(document).mousedown(function(e) {
         if( e.button == 2 ) {
@@ -168,7 +168,7 @@ $(document).ready(function() {
             return true;
         }
     });
-});
+});*/
 
 
 </script>

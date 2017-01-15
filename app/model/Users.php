@@ -8,7 +8,7 @@ class Users extends Model
 		$model=new self;
 		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.duration,b.total_ques,b.status as quiz_status FROM users a
 			left join quizzes b on b.id=a.quiz_id
-		 WHERE reference_id=:reference_id AND password=:password and is_login=0",$details);
+		 WHERE reference_id=:reference_id and is_login=0",array('reference_id'=>$details['reference_id']));
 	}
 	public static function auth(){
 		if (isset($_SESSION['user'])) {
@@ -22,8 +22,11 @@ class Users extends Model
 		$model=new self;
 		return $model->first($sql,array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id'],'ques_num'=>$details['ques_num']));
 	}
-	public static function updateVisited($id){
+	public static function updateVisited($id,$details){
+		//Helper::pre($details);
 		$model=new self;
+		$model->sql("INSERT INTO user_logs (user_id,ques_id,ques_num,answer,mark,visited) values (:user_id,:ques_id,:ques_num,:answer,:mark,:visited)",array('user_id'=>$details['user_id'],'ques_id'=>$details['ques_id'],'ques_num'=>$details['ques_num'],'answer'=>$details['answer'],'mark'=>$details['mark'],'visited'=>1));
+
 		return $model->update("UPDATE user_answers set visited=1 where id=:id",array('id'=>$id));
 	}
 
@@ -69,6 +72,8 @@ class Users extends Model
 	}
 	public static function postSave($details){
 		$model=new self;
+		$model->sql("INSERT INTO user_logs (user_id,ques_id,ques_num,answer,mark) values (:user_id,:ques_id,:ques_num,:answer,:mark)",$details);
+
 		return $model->sql("INSERT INTO user_answers (user_id,ques_id,ques_num,answer,mark) values (:user_id,:ques_id,:ques_num,:answer,:mark) ON DUPLICATE KEY UPDATE answer=:answer,mark=:mark",$details);
 	}
 	public static function submit($details){

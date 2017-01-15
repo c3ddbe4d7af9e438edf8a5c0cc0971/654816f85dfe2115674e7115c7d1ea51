@@ -45,7 +45,7 @@ class Home
 		$details['user_id']=$user->id;
 		$details['ques_num']=$id;
 		$ques=Users::getQues($details);
-		Users::updateVisited($ques->user_answer_id);
+		Users::updateVisited($ques->user_answer_id,(array)$ques);
 		return View::make('ques',['ques'=>$ques,'user'=>$user]);
 	}
 	public function getRes(){
