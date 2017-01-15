@@ -18,12 +18,11 @@ class Users extends Model
 	}
 
 	public static function getQues($details){
-		$sql="SELECT a.*,b.*,b.id as user_answer_id from questions a left join user_answers b on a.id=b.ques_id where b.user_id=:user_id and a.quiz_id=:quiz_id and b.ques_num=:ques_num";
+		$sql="SELECT a.*,b.*,b.id as user_answer_id,b.opt1,b.opt2,b.opt3,b.opt4 from questions a left join user_answers b on a.id=b.ques_id where b.user_id=:user_id and a.quiz_id=:quiz_id and b.ques_num=:ques_num";
 		$model=new self;
 		return $model->first($sql,array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id'],'ques_num'=>$details['ques_num']));
 	}
 	public static function updateVisited($id,$details){
-		//Helper::pre($details);
 		$model=new self;
 		$model->sql("INSERT INTO user_logs (user_id,ques_id,ques_num,answer,mark,visited) values (:user_id,:ques_id,:ques_num,:answer,:mark,:visited)",array('user_id'=>$details['user_id'],'ques_id'=>$details['ques_id'],'ques_num'=>$details['ques_num'],'answer'=>$details['answer'],'mark'=>$details['mark'],'visited'=>1));
 
@@ -49,9 +48,11 @@ class Users extends Model
 	}
 
 	private static function make_insert($details,$result){
-		$sql="INSERT INTO user_answers (user_id,ques_id,ques_num,answer,mark) values";
+		$sql="INSERT INTO user_answers (user_id,ques_id,ques_num,option1,option2,option3,option4,answer,mark) values";
 		foreach ($result as $key => $value) {
-			$sql.="(".$details['user_id'].",".$value->id.",".($key+1).",''".",''"."),";
+			$arr=array('option1','option2','option3','option4');
+			shuffle($arr);
+			$sql.="(".$details['user_id'].",".$value->id.",".($key+1).",".'\''.($arr[0]).'\''.",".'\''.($arr[1]).'\''.",".'\''.($arr[2]).'\''.",".'\''.($arr[3]).'\''.",''".",''"."),";
 		}
 		$sql=rtrim($sql,',');
 		return $sql;
