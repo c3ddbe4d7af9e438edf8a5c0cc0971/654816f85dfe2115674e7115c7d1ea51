@@ -27,7 +27,10 @@ if($ques->ques_num==$user->total_ques){
 </ul>
 <div class="row response_bar">
   <a href="javascript:void(0)"><div class="col-md-3 col-xs-12 custom_default_btn mrn"> Mark for Review & Next</div></a>
+
+  <a href="javascript:void(0)"><div class="col-md-3 col-xs-12 custom_default_btn mrns"> Answer and Review & Next</div></a>
+
   <a href="javascript:void(0)"><div class="col-md-2 col-xs-12 custom_default_btn clr">Clear response</div></a>
-  <a href="javascript:void(0)"><div data-is_last="<?=$is_last?>" class="col-md-2 col-md-offset-4  col-xs-12 custom_default_btn sn">Save & Next</div></a>
+  <a href="javascript:void(0)"><div data-is_last="<?=$is_last?>" class="col-md-2 col-xs-12 custom_default_btn sn">Save & Next</div></a>
 </div>
 </div>

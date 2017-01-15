@@ -33,6 +33,21 @@ $left=($duration-$time);
               <!-- <li><a href = "#section2" data-toggle = "tab">Section 2</a></li> -->
             </ul>
           </div>
+
+          <div class="col-md-6 col-xs-6 section_rows">
+            <ul id = "myTab" class = "nav nav-tabs">
+              <li class = "active pull-right">
+                <a href = "/" style="cursor: pointer;">
+                  Instriction
+                </a>
+              </li>
+              <li class = "active pull-right">
+                <a href = "/" style="cursor: pointer;">
+                  Profile
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div id = "myTabContent" class = "tab-content">
           <div class = "tab-pane fade in active" id = "section1">
@@ -96,6 +111,28 @@ $(document).on('click','.mrn',function(){
   var formData=$("#rest").serializeArray();
   formData.push({ name: "mark", value: "1" });
   formData.push({ name: "answer", value: "" });
+  var id=q.attr('data-id');
+  $.ajax({
+    url:'/ques/save',
+    method:'POST',
+    data:formData,
+  }).done(function(data){
+    result=$.parseJSON(data);
+    if (result.success=='1') {
+      if (q.attr('data-last')=='0') {
+        loadQues(parseInt(q.attr('data-ques_num'))+1);
+      }
+      //loadUres();
+    }
+  });
+  return false;
+});
+
+
+$(document).on('click','.mrns',function(){
+  var q=$(this).parents('.ques');
+  var formData=$("#rest").serializeArray();
+  formData.push({ name: "mark", value: "1" });
   var id=q.attr('data-id');
   $.ajax({
     url:'/ques/save',

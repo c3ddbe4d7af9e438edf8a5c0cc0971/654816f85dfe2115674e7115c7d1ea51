@@ -3,6 +3,16 @@ $res=$data['res'];
 $user=$data['user'];
 //Helper::pre($res);die();
 ?>
+
+<style type="text/css">
+  .ract{
+    border-radius: 0;
+    width: 10px;
+    height: 27px;
+    text-align: center;
+    margin: 2% 5%;
+  }
+</style>
 <div style="width: 100%;height: 500px;overflow-y: scroll;overflow-x: hidden;">
 <div class="right_down">
   <h1 class="text-center">Objective Section</h1>
@@ -20,9 +30,12 @@ $user=$data['user'];
         if (@$value->answer) {
           $color='#38b46c';
         }
+        if (@!empty($value->answer) && @$value->mark ) {
+          $color='#9fbdac';
+        }
         
     ?>
-    <div data-ques_num="<?=$value->ques_num?>" class="col-md-3 col-xs-3 cirle qsrn" data-color="<?=$color?>" style="background: <?=$color?>;cursor: pointer">
+    <div data-ques_num="<?=$value->ques_num?>" class="col-md-3 col-xs-3 <?=$color=='#fff'?'ract':'cirle'?> qsrn" data-color="<?=$color?>" style="background: <?=$color?>;cursor: pointer">
       <p class="digit"><?=$value->ques_num?></p>
     </div>
     <?php }
@@ -33,11 +46,13 @@ $user=$data['user'];
       <div class="row">
         <div class="col-md-12 col-xs-12 Review green">
         </div>
+        <div class="col-md-12 col-xs-12 Review cyan">
+        </div>
         <div class="col-md-12 col-xs-12 Review blue">
         </div>
         <div class="col-md-12 col-xs-12 Review red">
         </div>
-        <div class="col-md-12 col-xs-12 Review white">
+        <div class="col-md-12 col-xs-12 Review white" style="border-radius: 0">
         </div>
       </div>
     </div>
@@ -45,6 +60,9 @@ $user=$data['user'];
       <div class="row">
         <div class="col-md-12 col-xs-12 status_text">
           Answered
+        </div>
+        <div class="col-md-12 col-xs-12 status_text">
+          Review
         </div>
         <div class="col-md-12 col-xs-12 status_text">
           Marked
