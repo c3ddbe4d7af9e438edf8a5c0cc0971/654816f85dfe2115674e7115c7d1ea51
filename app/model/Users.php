@@ -112,5 +112,12 @@ class Users extends Model
 	public static function user_details($id){
 		return (new self)->select("SELECT * from users where id=:id",array('id'=>$id));
 	}
+
+	public static function alert_submit($details){
+		$model=new self;
+		$model->sql("INSERT INTO user_quizes (user_id,quiz_id,count) values (:user_id,:quiz_id,1) ON DUPLICATE KEY UPDATE count=count+1",$details);
+		return $model->select("SELECT * from user_quizes where user_id=:user_id and quiz_id=:quiz_id",array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
+
+	}
 }
 ?>

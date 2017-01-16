@@ -206,6 +206,56 @@ $(document).on('click','.clr',function(){
         }
     });
 });*/
+var d=0;
+$(document).ready(function(){
+
+
+  $(document).on('click',function(){
+    clearInterval(b);
+    if (d!=0) {
+      clearInterval(d);
+    }
+    d=setInterval(function(){
+      $.ajax({
+        url:'/alertsubmit',
+        method:'POST',
+      }).done(function(data){
+        result=$.parseJSON(data);
+        if (result.success=='1') {
+          if(result.data[0].count<4){
+            alert('please do somthing');
+            $(document).trigger('click');
+            return false;
+          }
+          else{
+            window.location.href="/submit";
+            return false;
+          } 
+        }
+      });
+    },60000);
+  });
+  var b=setInterval(function(){
+   $.ajax({
+    url:'/alertsubmit',
+    method:'POST',
+  }).done(function(data){
+    result=$.parseJSON(data);
+    if (result.success=='1') {
+      if(result.data[0].count<4){
+        alert('please do somthing');
+        $(document).trigger('click');
+        return false;
+      }
+      else{
+        window.location.href="/submit";
+        return false;
+      }
+    }
+  });
+  },60000);
+
+});
 
 
 </script>

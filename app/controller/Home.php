@@ -93,5 +93,16 @@ class Home
 		Users::submit($details);
 		return View::make('submits');
 	}
+
+	public function alertSubmit(){
+		$user=Users::auth();
+		$details['quiz_id']=$user->quiz_id;
+		$details['user_id']=$user->id;
+		$data=Users::alert_submit($details);
+		if(false!==$data){
+			return Json::make('1','details are',$data)->response();
+		}
+		return Json::make('0','Server Error')->response();
+	}
 }
 ?>

@@ -13,6 +13,7 @@ $route->get('/submit','Home@getSubmit');
 $route->post('/login','Account@postLogin');
 $route->post('/insertQues','Home@insertQues');
 $route->post('/ques/:id/mark','Home@postMark');
+$route->post('/alertsubmit','Home@alertSubmit');
 
 
 
