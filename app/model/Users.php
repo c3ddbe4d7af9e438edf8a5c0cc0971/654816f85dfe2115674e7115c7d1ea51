@@ -48,7 +48,7 @@ class Users extends Model
 	}
 
 	private static function make_insert($details,$result){
-		$sql="INSERT INTO user_answers (user_id,ques_id,ques_num,option1,option2,option3,option4,answer,mark) values";
+		$sql="INSERT INTO user_answers (user_id,ques_id,ques_num,opt1,opt2,opt3,opt4,answer,mark) values";
 		foreach ($result as $key => $value) {
 			$arr=array('option1','option2','option3','option4');
 			shuffle($arr);

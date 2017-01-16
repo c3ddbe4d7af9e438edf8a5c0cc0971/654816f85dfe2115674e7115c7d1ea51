@@ -1,6 +1,15 @@
 <?php 
 $ques=$data['ques'];
 //Helper::pre($ques);
+$arra=array();
+$arra['option1']=$ques->{$ques->opt1};
+$arra['option2']=$ques->{$ques->opt2};
+$arra['option3']=$ques->{$ques->opt3};
+$arra['option4']=$ques->{$ques->opt4};
+$ques->option1=$arra['option1'];
+$ques->option2=$arra['option2'];
+$ques->option3=$arra['option3'];
+$ques->option4=$arra['option4'];
 $user=$data['user'];
 $is_last='0';
 if($ques->ques_num==$user->total_ques){
