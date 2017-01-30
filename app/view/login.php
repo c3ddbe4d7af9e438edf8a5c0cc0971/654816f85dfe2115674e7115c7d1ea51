@@ -14,7 +14,7 @@
 
 
 
-<title>Binsys</title>
+<title>BinSys</title>
 
 </head>
 
@@ -23,7 +23,7 @@
 <div class="container-fluid">
 
 
-<div class="custom_nav"><h1 class="text-center">Binsys</h1></div>
+<div class="custom_nav"><h1 class="text-center">BinSys</h1></div>
 
 
 <div class="row">

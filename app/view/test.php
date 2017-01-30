@@ -15,11 +15,11 @@ $left=($duration-$time);
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.simple.timer.js"></script>
     <script src="js/dojo.js"></script>
-    <title>Binsyis</title>
+    <title>BinSys</title>
   </head>
 <body>
   <div class="container-fluid">
-    <div class="custom_nav"><h1 class="text-center">Binsyis</h1></div>
+    <div class="custom_nav"><h1 class="text-center">BinSys</h1></div>
     <div class="row">
       <div class="col-md-9 col-xs-12 left">
         <div class="row ">

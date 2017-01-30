@@ -25,7 +25,7 @@ class Account
 			die;
 		}
 		$user_details=Users::user_details(Users::auth()->id);
-		if($user_details['0']->completed=='1'){
+		if($user_details->completed=='1'){
 			header('location:/submit');die();
 		}
 		header('location:/');

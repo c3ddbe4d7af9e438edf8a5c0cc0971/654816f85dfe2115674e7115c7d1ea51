@@ -15,12 +15,12 @@ class Home
 	public function getHome(){
 		$user=Users::auth();
 		$data=Users::getInstruction($user->quiz_id);
-		return View::make('ins',['instruction'=>$data,'user'=>$user]);
+		return View::make('ins',['instruction'=>$data,'user'=>$user,'user_details'=>Users::user_details()]);
 	}
 	public function getTest(){
 		$user=Users::auth();
 		$user_details=Users::user_details($user->id);
-		if($user_details['0']->is_start=='0'){
+		if($user_details->is_start=='0'){
 			header('location:/');die();
 		}
 		return View::make('test',['user'=>$user]);
@@ -45,8 +45,9 @@ class Home
 		$details['user_id']=$user->id;
 		$details['ques_num']=$id;
 		$ques=Users::getQues($details);
+		$language=Users::getLang($details);
 		Users::updateVisited($ques->user_answer_id,(array)$ques);
-		return View::make('ques',['ques'=>$ques,'user'=>$user]);
+		return View::make('ques',['ques'=>$ques,'user'=>$user,'language'=>$language]);
 	}
 	public function getRes(){
 		$user=Users::auth();
@@ -101,6 +102,18 @@ class Home
 		$data=Users::alert_submit($details);
 		if(false!==$data){
 			return Json::make('1','details are',$data)->response();
+		}
+		return Json::make('0','Server Error')->response();
+	}
+
+	public function langSubmit(){
+		$details=Input::post(array('language'));
+		$user=Users::auth();
+		$details['quiz_id']=$user->quiz_id;
+		$details['user_id']=$user->id;
+		$data=Users::langSubmit($details);
+		if(false!==$data){
+			return Json::make('1','details are',$details['language'])->response();
 		}
 		return Json::make('0','Server Error')->response();
 	}

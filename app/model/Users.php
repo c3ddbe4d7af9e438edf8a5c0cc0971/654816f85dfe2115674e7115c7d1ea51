@@ -30,6 +30,7 @@ class Users extends Model
 	}
 
 	public static function insertQues($details){
+		var_dump($details);
 		$model=new self;
 		$sql="SELECT * FROM questions where quiz_id=:quiz_id order by rand()";
 		$result=$model->select($sql,array('quiz_id'=>$details['quiz_id']));
@@ -108,16 +109,23 @@ class Users extends Model
 		return $model->update("UPDATE users set is_login=1 where id=:id and quiz_id=:quiz_id",array('id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
 	}
 
-
-	public static function user_details($id){
-		return (new self)->select("SELECT * from users where id=:id",array('id'=>$id));
-	}
-
 	public static function alert_submit($details){
 		$model=new self;
 		$model->sql("INSERT INTO user_quizes (user_id,quiz_id,count) values (:user_id,:quiz_id,1) ON DUPLICATE KEY UPDATE count=count+1",$details);
 		return $model->select("SELECT * from user_quizes where user_id=:user_id and quiz_id=:quiz_id",array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
 
+	}
+	public static function langSubmit($details){
+		$model=new self;
+		return $model->sql("INSERT INTO user_quizes (user_id,quiz_id,language) values (:user_id,:quiz_id,:language) ON DUPLICATE KEY UPDATE language=:language",$details);
+	}
+
+	public static function getLang($details){
+		return (new self)->first("SELECT language from user_quizes where user_id=:user_id and quiz_id=:quiz_id",array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']))->language;
+	}
+
+	public static function user_details(){
+		return (new self)->select("SELECT a.*,b.* FROM `users` a  left join user_quizes b on b.user_id=a.id WHERE a.id=:id",array('id'=>Users::auth()->id))[0];
 	}
 }
 ?>

@@ -1,6 +1,7 @@
 <?php 
+
+//Helper::pre($data['language']);die();
 $ques=$data['ques'];
-//Helper::pre($ques);
 $arra=array();
 $arra['option1']=$ques->{$ques->opt1};
 $arra['option2']=$ques->{$ques->opt2};
@@ -32,35 +33,35 @@ if($ques->ques_num==$user->total_ques){
 <div class="question_type">
   <div class="lang" style="margin-bottom: 5px;text-align:right;">
     <select>
-      <option value="1">English</option>
-      <option value="2">Hindi</option>
+      <option value="1" <?=$data['language']=='1'?'selected':''?>>English</option>
+      <option value="2" <?=$data['language']=='2'?'selected':''?>>Hindi</option>
     </select>
   </div>
   <p class="heading_custom"> Question Type - Objective</p>
   <p class="heading_custom2"> Question no.<span id="ques_num"><?=$ques->ques_num?></span></p>
 </div>
 
-<ul class="questions english show">
+<ul class="questions english <?=$data['language']=='1'?'show':'hide'?>">
   <?=$ques->question?>
   <form class="rest">
-  <!-- <p>Options</p> -->
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option1?'checked':''?> value="<?=$ques->option1?>"> <?=$ques->option1?><br>
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option2?'checked':''?> value="<?=$ques->option2?>"> <?=$ques->option2?><br>
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option3?'checked':''?> value="<?=$ques->option3?>"> <?=$ques->option3?><br>
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option4?'checked':''?> value="<?=$ques->option4?>"> <?=$ques->option4?><br>
+  <p><b>Options</b></p>
+    A. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option1?'checked':''?> value="<?=$ques->option1?>"> <?=$ques->option1?><br>
+    B. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option2?'checked':''?> value="<?=$ques->option2?>"> <?=$ques->option2?><br>
+    C. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option3?'checked':''?> value="<?=$ques->option3?>"> <?=$ques->option3?><br>
+    D. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option4?'checked':''?> value="<?=$ques->option4?>"> <?=$ques->option4?><br>
     <input type="hidden" name="ques_num" value="<?=$ques->ques_num?>">
     <input type="hidden" name="ques_id" value="<?=$ques->ques_id?>">
   </form>
 </ul>
 
-<ul class="questions hindi hide">
+<ul class="questions hindi <?=$data['language']=='2'?'show':'hide'?>">
   <?=$ques->h_question?>
   <form class="rest">
-  <!-- <p>Options</p> -->
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option1?'checked':''?> value="<?=$ques->h_option1?>"> <?=$ques->h_option1?><br>
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option2?'checked':''?> value="<?=$ques->h_option2?>"> <?=$ques->h_option2?><br>
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option3?'checked':''?> value="<?=$ques->h_option3?>"> <?=$ques->h_option3?><br>
-    <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option4?'checked':''?> value="<?=$ques->h_option4?>"> <?=$ques->h_option4?><br>
+  <p><b>विकल्प</b></p>
+    A. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option1?'checked':''?> value="<?=$ques->h_option1?>"> <?=$ques->h_option1?><br>
+    B. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option2?'checked':''?> value="<?=$ques->h_option2?>"> <?=$ques->h_option2?><br>
+    C. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option3?'checked':''?> value="<?=$ques->h_option3?>"> <?=$ques->h_option3?><br>
+    D. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option4?'checked':''?> value="<?=$ques->h_option4?>"> <?=$ques->h_option4?><br>
     <input type="hidden" name="ques_num" value="<?=$ques->ques_num?>">
     <input type="hidden" name="ques_id" value="<?=$ques->ques_id?>">
   </form>
