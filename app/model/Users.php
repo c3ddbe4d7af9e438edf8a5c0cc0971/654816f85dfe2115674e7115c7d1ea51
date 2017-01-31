@@ -30,7 +30,6 @@ class Users extends Model
 	}
 
 	public static function insertQues($details){
-		var_dump($details);
 		$model=new self;
 		$sql="SELECT * FROM questions where quiz_id=:quiz_id order by rand()";
 		$result=$model->select($sql,array('quiz_id'=>$details['quiz_id']));
