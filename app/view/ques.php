@@ -38,7 +38,9 @@ if($ques->ques_num==$user->total_ques){
     </select>
   </div>
   <p class="heading_custom"> Question Type - Objective</p>
-  <p class="heading_custom1"><?=$ques->passage?></p>
+  <p class="heading_custom1 hindi <?=$data['language']=='2'?'show':'hide'?>"> <?php if($ques->h_passage =='') {?> <?=$ques->passage ?><?php } else {?> <?=$ques->h_passage ?> <?php }?></p>
+  <p class="heading_custom1 english <?=$data['language']=='1'?'show':'hide'?>"> <?=$ques->passage?></p>
+
   <p class="heading_custom2"> Question no.<span id="ques_num"><?=$ques->ques_num?></span></p>
 </div>
 
@@ -47,10 +49,10 @@ if($ques->ques_num==$user->total_ques){
   <?=$ques->h_question?>
   <form class="rest">
   <p><b>विकल्प</b></p>
-    A. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option1?'checked':''?> value="<?=$ques->h_option1?>"> <?=$ques->h_option1?><br>
-    B. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option2?'checked':''?> value="<?=$ques->h_option2?>"> <?=$ques->h_option2?><br>
-    C. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option3?'checked':''?> value="<?=$ques->h_option3?>"> <?=$ques->h_option3?><br>
-    D. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->h_option4?'checked':''?> value="<?=$ques->h_option4?>"> <?=$ques->h_option4?><br>
+    A. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='1'?'checked':''?> value='1'> <?=$ques->h_option1?><br>
+    B. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='2'?'checked':''?> value='2'> <?=$ques->h_option2?><br>
+    C. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='3'?'checked':''?> value='3'> <?=$ques->h_option3?><br>
+    D. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='4'?'checked':''?> value='4'> <?=$ques->h_option4?><br>
     <input type="hidden" name="ques_num" value="<?=$ques->ques_num?>">
     <input type="hidden" name="ques_id" value="<?=$ques->ques_id?>">
   </form>
@@ -60,10 +62,10 @@ if($ques->ques_num==$user->total_ques){
   <?=$ques->question?>
   <form class="rest">
   <p><b>Options</b></p>
-    A. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option1?'checked':''?> value="<?=$ques->option1?>"> <?=$ques->option1?><br>
-    B. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option2?'checked':''?> value="<?=$ques->option2?>"> <?=$ques->option2?><br>
-    C. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option3?'checked':''?> value="<?=$ques->option3?>"> <?=$ques->option3?><br>
-    D. <input type="radio" class="nameres" name="answer" <?=$ques->answer==$ques->option4?'checked':''?> value="<?=$ques->option4?>"> <?=$ques->option4?><br>
+    A. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='1'?'checked':''?> value='1'> <?=$ques->option1?><br>
+    B. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='2'?'checked':''?> value='2'> <?=$ques->option2?><br>
+    C. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='3'?'checked':''?> value='3'> <?=$ques->option3?><br>
+    D. <input type="radio" class="nameres" name="answer" <?=$ques->answer=='4'?'checked':''?> value='4'> <?=$ques->option4?><br>
     <input type="hidden" name="ques_num" value="<?=$ques->ques_num?>">
     <input type="hidden" name="ques_id" value="<?=$ques->ques_id?>">
   </form>

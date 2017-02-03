@@ -30,9 +30,24 @@ class Users extends Model
 	}
 
 	public static function insertQues($details){
+		// $model=new self;
+		// $sql="SELECT * FROM questions where quiz_id=:quiz_id order by id asc";
+		// $result=$model->select($sql,array('quiz_id'=>$details['quiz_id']));
+		// $sql=Self::make_insert($details,$result);
+		// $d=$model->sql_insert($sql);
+		// if($d!==false){
+		// 	$u=$model->update("UPDATE users set is_start=1 where id=:id and quiz_id=:quiz_id",array('id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
+		// 	return $u;
+		// }
+		// return false;
+
+		var_dump($details);
 		$model=new self;
-		$sql="SELECT * FROM questions where quiz_id=:quiz_id order by rand()";
-		$result=$model->select($sql,array('quiz_id'=>$details['quiz_id']));
+		$sql1="SELECT * FROM questions where quiz_id=:quiz_id and is_passage=0 order by rand()";
+		$sql2="SELECT * FROM questions where quiz_id=:quiz_id and is_passage=1";
+		$result1=$model->select($sql1,array('quiz_id'=>$details['quiz_id']));
+		$result2=$model->select($sql2,array('quiz_id'=>$details['quiz_id']));
+		$result 	=	array_merge($result2,$result1);
 		$sql=Self::make_insert($details,$result);
 		$d=$model->sql_insert($sql);
 		if($d!==false){
