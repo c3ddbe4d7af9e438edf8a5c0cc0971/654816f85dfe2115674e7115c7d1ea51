@@ -88,9 +88,15 @@ class Users extends Model
 	}
 	public static function postSave($details){
 		$model=new self;
-		$model->sql("INSERT INTO user_logs (user_id,ques_id,ques_num,answer,mark) values (:user_id,:ques_id,:ques_num,:answer,:mark)",$details);
+		$ans='opt'.$details['answer'];
+		$data=$model->first("SELECT opt1,opt2,opt3,opt4 from user_answers where user_id=:user_id and ques_id=:ques_id",array('user_id'=>$details['user_id'],'ques_id'=>$details['ques_id']));
+		$option=$data->$ans;
+		$details['ansoption']=$option;
+		$ans=$model->first("SELECT option1,option2,option3,option4 from questions where id=:id",array('id'=>$details['ques_id']));
+		$details['answerf']=$ans->$option;
+		$model->sql("INSERT INTO user_logs (user_id,ques_id,ques_num,answer,answerf,ansoption,mark) values (:user_id,:ques_id,:ques_num,:answer,:answerf,:ansoption,:mark)",$details);
 
-		return $model->sql("INSERT INTO user_answers (user_id,ques_id,ques_num,answer,mark) values (:user_id,:ques_id,:ques_num,:answer,:mark) ON DUPLICATE KEY UPDATE answer=:answer,mark=:mark",$details);
+		return $model->sql("INSERT INTO user_answers (user_id,ques_id,ques_num,answer,answerf,ansoption,mark) values (:user_id,:ques_id,:ques_num,:answer,:answerf,:ansoption,:mark) ON DUPLICATE KEY UPDATE answer=:answer,answerf=:answerf,ansoption=:ansoption,mark=:mark",$details);
 	}
 	public static function submit($details){
 		return (new self)->update("UPDATE users SET completed=1 WHERE id=:id and quiz_id=:quiz_id",array('id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
