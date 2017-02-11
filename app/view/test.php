@@ -69,7 +69,13 @@ $left=($duration-$time);
       </div>
       <div class="col-md-3 col-xs-12 right">
         <div class=" col-md-12 col-xs-12 text-center custom_timer">
-          <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>
+        <img src="/image/<?=$user->profile_pic?>" width="100px" height="100px">
+          <div class="pic">
+            <p class="">Welcome :<?=$user->name?> </p>
+            <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>
+            
+          </div>
+          
           <section class='actions'></section>
         </div>
         <div class="ures">
