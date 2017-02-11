@@ -6,7 +6,7 @@ class Users extends Model
 {
 	public static function login($details){
 		$model=new self;
-		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.duration,b.total_ques,b.status as quiz_status FROM users a
+		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.logo,b.duration,b.total_ques,b.status as quiz_status FROM users a
 			left join quizzes b on b.id=a.quiz_id
 		 WHERE reference_id=:reference_id and is_login=0",array('reference_id'=>$details['reference_id']));
 	}

@@ -15,11 +15,14 @@ $left=($duration-$time);
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.simple.timer.js"></script>
     <script src="js/dojo.js"></script>
-    <title>BinSys</title>
+    <title><?=$user->quiz_name?></title>
   </head>
 <body>
   <div class="container-fluid">
-    <div class="custom_nav"><h1 class="text-center">BinSys</h1></div>
+    <div class="custom_nav">
+      <img src="/image/<?=$user->logo?>" width="100px" height="100px">
+      <h1 class="text-center"><?=$user->quiz_name?></h1>
+    </div>
     <div class="row">
       <div class="col-md-9 col-xs-12 left">
         <div class="row ">
