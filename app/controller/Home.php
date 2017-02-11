@@ -92,7 +92,7 @@ class Home
 		$details['quiz_id']=$user->quiz_id;
 		$details['user_id']=$user->id;
 		Users::submit($details);
-		return View::make('submits');
+		return View::make('submits',array('user'=>$user));
 	}
 
 	public function alertSubmit(){

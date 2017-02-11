@@ -1,3 +1,7 @@
+<?php
+$user=$data['user'];
+?>
+
 <html>
 <head>
 
@@ -13,16 +17,17 @@
 
 
 
-<title>Binsyis</title>
+<title><?=$user->quiz_name?></title>
 
 </head>
 
 <body>
 
 <div class="container-fluid">
-
-
-<div class="custom_nav"><h1 class="text-center">Binsyis</h1></div>
+	<div class="custom_nav">
+		<img src="/image/<?=$user->logo?>" width="100px" height="100px">
+		<h1 class="text-center"><?=$user->quiz_name?></h1>
+	</div>
 
 
 <div class="row">
