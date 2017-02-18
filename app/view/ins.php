@@ -21,11 +21,12 @@ $is_start=$data['user_details']->is_start;
 <body>
   <div class="container-fluid">
     <div class="custom_nav">
-    <img src="/image/<?=$user->logo?>" width="100px" height="100px">
-      <h1 class="text-center"><?=$user->quiz_name?></h1>
+    <img src="/image/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
+    margin:-10px 15px 15px 10px;">
+      <h1 class="text-center" style="position: relative; margin:-63px -13px 0px 10px;"><?=$user->quiz_name?></h1>
     </div>
     <div class="row">
-      <div class="col-md-9 col-xs-12 left">
+      <div class="col-md-9 col-xs-12 left" style="height:560px">
         <div class="terms_condition">
           <p class="condition_custom2">Test Format:</p>
           <ul class="terms">
@@ -55,6 +56,7 @@ $is_start=$data['user_details']->is_start;
             </select>
             </div>
           </div>
+
             <?php if(!$is_start){  ?>
               <div class="col-md-2 col-md-offset-5 col-xs-12 custom_default_btn accept  <?=$is_start?'hide':''?>" style="cursor:pointer"> I'm Ready To Begin</div>
             <?php  }else{ ?>
@@ -112,7 +114,9 @@ $is_start=$data['user_details']->is_start;
         }).done(function(data){
           result=$.parseJSON(data);
           if (result.success=='1') {
+          
             window.location.href='/test';
+
           }else{
             alert('Server Error');
           }

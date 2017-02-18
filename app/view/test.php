@@ -19,12 +19,13 @@ $left=($duration-$time);
   </head>
 <body>
   <div class="container-fluid">
-    <div class="custom_nav">
-      <img src="/image/<?=$user->logo?>" width="100px" height="100px">
-      <h1 class="text-center"><?=$user->quiz_name?></h1>
+    <div class="custom_nav" >
+      <img src="/image/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
+    margin:-10px 15px 15px 10px;">
+      <h1 class="text-center" style="position: relative; margin:-63px -13px 0px 10px;"><?=$user->quiz_name?></h1>
     </div>
     <div class="row">
-      <div class="col-md-9 col-xs-12 left">
+      <div class="col-md-9 col-xs-12">
         <div class="row ">
           <div class="col-md-6 col-xs-6 section_rows">
             <ul id = "myTab" class = "nav nav-tabs">
@@ -72,7 +73,7 @@ $left=($duration-$time);
       </div>
       <div class="col-md-3 col-xs-12 right">
         <div class=" col-md-12 col-xs-12 text-center custom_timer">
-        <img src="/image/<?=$user->profile_pic?>" width="100px" height="100px">
+        <img src="/image/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
           <div class="pic">
             <p class="">Welcome :<?=$user->name?> </p>
             <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>

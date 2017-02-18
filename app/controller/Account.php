@@ -21,14 +21,14 @@ class Account
 		if (password_verify($details['password'],$user->password)) {
 			$_SESSION['user']=json_encode($user);
 		}else{
-			header('location:/login?error=1');
-			die;
+			//header('location:/login?error=1');
+			return View::make('login',array('is_login_error'=>'1','is_login'=>'0'));
 		}
 		$user_details=Users::user_details(Users::auth()->id);
 		if($user_details->completed=='1'){
 			header('location:/submit');die();
 		}
-		header('location:/');
+		return View::make('login',array('is_login_error'=>'0','is_login'=>'1'));
 	}
 }
 ?>
