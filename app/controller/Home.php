@@ -45,7 +45,7 @@ class Home
 		$details['quiz_id']=$user->quiz_id;
 		$details['user_id']=$user->id;
 		$details['ques_num']=$id;
-		$ques=Users::getQues($details);
+		$ques=Helper::format_ques(Users::getQues($details));
 		$language=Users::getLang($details);
 		Users::updateVisited($ques->user_answer_id,(array)$ques);
 		return View::make('ques',['ques'=>$ques,'user'=>$user,'language'=>$language]);

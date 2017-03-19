@@ -95,7 +95,6 @@ $(document).ready(function(){
   loadUres();
 })
 function loadQues(ques_num){
-  $(".ques_holder").html('<p>Loading...</p>')
   $.ajax({
     url:'/ques/'+ques_num,
   }).done(function(data){

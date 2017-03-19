@@ -2,28 +2,6 @@
 
 //Helper::pre($data['language']);die();
 $ques=$data['ques'];
-//echo '<pre>';print_r($ques);die;
-$arra=array();
-$arra['A']=$ques->{$ques->opt1};
-$arra['B']=$ques->{$ques->opt2};
-$arra['C']=$ques->{$ques->opt3};
-$arra['D']=$ques->{$ques->opt4};
-
-$ques->option1=$arra['A'];
-$ques->option2=$arra['B'];
-$ques->option3=$arra['C'];
-$ques->option4=$arra['D'];
-
-
-$arra['h_A']=$ques->{'h_'.$ques->opt1};
-$arra['h_B']=$ques->{'h_'.$ques->opt2};
-$arra['h_C']=$ques->{'h_'.$ques->opt3};
-$arra['h_D']=$ques->{'h_'.$ques->opt4};
-
-$ques->h_option1=$arra['h_A'];
-$ques->h_option2=$arra['h_B'];
-$ques->h_option3=$arra['h_C'];
-$ques->h_option4=$arra['h_D'];
 $user=$data['user'];
 $is_last='0';
 if($ques->ques_num==$user->total_ques){
