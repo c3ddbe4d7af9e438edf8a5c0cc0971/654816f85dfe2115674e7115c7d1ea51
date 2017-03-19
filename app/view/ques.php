@@ -2,27 +2,28 @@
 
 //Helper::pre($data['language']);die();
 $ques=$data['ques'];
+//echo '<pre>';print_r($ques);die;
 $arra=array();
-$arra['option1']=$ques->{$ques->opt1};
-$arra['option2']=$ques->{$ques->opt2};
-$arra['option3']=$ques->{$ques->opt3};
-$arra['option4']=$ques->{$ques->opt4};
+$arra['A']=$ques->{$ques->opt1};
+$arra['B']=$ques->{$ques->opt2};
+$arra['C']=$ques->{$ques->opt3};
+$arra['D']=$ques->{$ques->opt4};
 
-$ques->option1=$arra['option1'];
-$ques->option2=$arra['option2'];
-$ques->option3=$arra['option3'];
-$ques->option4=$arra['option4'];
+$ques->option1=$arra['A'];
+$ques->option2=$arra['B'];
+$ques->option3=$arra['C'];
+$ques->option4=$arra['D'];
 
 
-$arra['h_option1']=$ques->{'h_'.$ques->opt1};
-$arra['h_option2']=$ques->{'h_'.$ques->opt2};
-$arra['h_option3']=$ques->{'h_'.$ques->opt3};
-$arra['h_option4']=$ques->{'h_'.$ques->opt4};
+$arra['h_A']=$ques->{'h_'.$ques->opt1};
+$arra['h_B']=$ques->{'h_'.$ques->opt2};
+$arra['h_C']=$ques->{'h_'.$ques->opt3};
+$arra['h_D']=$ques->{'h_'.$ques->opt4};
 
-$ques->h_option1=$arra['h_option1'];
-$ques->h_option2=$arra['h_option2'];
-$ques->h_option3=$arra['h_option3'];
-$ques->h_option4=$arra['h_option4'];
+$ques->h_option1=$arra['h_A'];
+$ques->h_option2=$arra['h_B'];
+$ques->h_option3=$arra['h_C'];
+$ques->h_option4=$arra['h_D'];
 $user=$data['user'];
 $is_last='0';
 if($ques->ques_num==$user->total_ques){
@@ -37,7 +38,7 @@ if($ques->ques_num==$user->total_ques){
       <option value="2" <?=$data['language']=='2'?'selected':''?>>Hindi</option>
     </select>
   </div>
-  <div class="left" style="height:385px;">
+  <div class="left" style="height:375px;">
   <p class="heading_custom"> Question Type - Objective</p>
 
   <p style="text-align: justify;" class="heading_custom1 hindi <?=$data['language']=='2'?'show':'hide'?>"> <?php if($ques->h_passage =='') {?> <?=$ques->passage ?><?php } else {?> <?=$ques->h_passage ?> <?php }?></p>

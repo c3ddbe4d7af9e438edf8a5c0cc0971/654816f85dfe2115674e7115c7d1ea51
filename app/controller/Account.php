@@ -18,7 +18,7 @@ class Account
 	public function postLogin(){
 		$details=Input::post(['reference_id','password']);
 		$user=Users::login($details);
-		if (password_verify($details['password'],$user->password)) {
+		if (sha1($details['password'])==$user->password) {
 			$_SESSION['user']=json_encode($user);
 		}else{
 			//header('location:/login?error=1');

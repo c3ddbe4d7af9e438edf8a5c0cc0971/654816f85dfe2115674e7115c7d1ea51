@@ -20,10 +20,11 @@ class Home
 	public function getTest(){
 		$user=Users::auth();
 		$user_details=Users::user_details($user->id);
+		$last_ques=Users::getLastquest($user);
 		if($user_details->is_start=='0'){
 			header('location:/');die();
 		}
-		return View::make('test',['user'=>$user]);
+		return View::make('test',['user'=>$user,'last_ques'=>$last_ques]);
 	}
 	public function insertQues(){
 		$user=Users::auth();

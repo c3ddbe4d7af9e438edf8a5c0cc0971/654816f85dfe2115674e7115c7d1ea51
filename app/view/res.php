@@ -17,7 +17,7 @@ $user=$data['user'];
 <div class="right_down">
   <!-- <h1 class="text-center">Objective Section</h1> -->
   <p><b>Question palette:</b></h1>
-  <div class="row text-center numbers" style="width: 100%;height: 230px;overflow-y: scroll;overflow-x: hidden;">
+  <div class="row text-center numbers" style="width: 100%;height: 225px;overflow-y: scroll;overflow-x: hidden;">
     <?php
     foreach ($res as $key => $value) {
         $color='#fff';
@@ -69,6 +69,17 @@ $user=$data['user'];
           Review
         </div>
         </div>
+        <div class="col-md-2 col-xs-2">
+     
+        <div class="col-md-12 col-xs-12  Review white" style="border-radius: 0">
+        </div>
+        </div>
+
+         <div class="col-md-10 col-xs-10">
+        <div class="col-md-12 col-xs-12 status_text" style="margin-left:38px;margin-top:-27px; padding-bottom:2px;">
+         Not&nbsp;Viewed
+        </div>
+        </div>
         </div>
         </div>
 
@@ -102,17 +113,7 @@ $user=$data['user'];
 
 <div class="col-md-6 col-xs-12">
  <div class="row">
-    <div class="col-md-2 col-xs-2">
-     
-        <div class="col-md-12 col-xs-12  Review white" style="border-radius: 0">
-        </div>
-        </div>
-
-         <div class="col-md-10 col-xs-10">
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:38px;margin-top:-27px; padding-bottom:2px;">
-         Not&nbsp;Viewed
-        </div>
-        </div>
+    
         </div>
         </div>
         </div>
@@ -193,7 +194,7 @@ $user=$data['user'];
     </div>
     <div class="row">
       <div class="col-md-12">
-        <!-- <button type="button" class="btn btn-default cus_btn sbmt">Submit</button> 
+         <button type="button" class="btn btn-default cus_btn sbmt">Submit</button> 
       </div>
     </div>
   </div> -->

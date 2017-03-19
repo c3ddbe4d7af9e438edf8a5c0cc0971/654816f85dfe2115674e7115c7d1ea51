@@ -1,5 +1,6 @@
 <?php
 $user=$data['user'];
+$last_ques=$data['last_ques'][0]->ques_num;
 $time=time()-$_SESSION['start_time'];
 $duration=$user->duration*60;
 $left=($duration-$time);
@@ -73,7 +74,7 @@ $left=($duration-$time);
       </div>
       <div class="col-md-3 col-xs-12 right">
         <div class=" col-md-12 col-xs-12 text-center custom_timer">
-        <img src="/image/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
+        <img src="/uploads/photo/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
           <div class="pic">
             <p class="">Welcome :<?=$user->name?> </p>
             <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>
@@ -88,8 +89,9 @@ $left=($duration-$time);
     </div>
   </div>
 <script type="text/javascript">
+var last_ques="<?=$last_ques?$last_ques:'1'?>";
 $(document).ready(function(){
-  loadQues(1);
+  loadQues(last_ques);
   loadUres();
 })
 function loadQues(ques_num){

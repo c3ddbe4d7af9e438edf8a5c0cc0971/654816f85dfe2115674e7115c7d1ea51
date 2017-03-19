@@ -54,7 +54,7 @@ class Users extends Model
 	private static function make_insert($details,$result){
 		$sql="INSERT INTO user_answers (user_id,ques_id,ques_num,opt1,opt2,opt3,opt4,answer,mark) values";
 		foreach ($result as $key => $value) {
-			$arr=array('option1','option2','option3','option4');
+			$arr=array('A','B','C','D');
 			shuffle($arr);
 			$sql.="(".$details['user_id'].",".$value->id.",".($key+1).",".'\''.($arr[0]).'\''.",".'\''.($arr[1]).'\''.",".'\''.($arr[2]).'\''.",".'\''.($arr[3]).'\''.",''".",''"."),";
 		}
@@ -82,7 +82,7 @@ class Users extends Model
 			$data=$model->first("SELECT opt1,opt2,opt3,opt4 from user_answers where user_id=:user_id and ques_id=:ques_id",array('user_id'=>$details['user_id'],'ques_id'=>$details['ques_id']));
 			$option=$data->$ans;
 			$details['ansoption']=$option;
-			$ans=$model->first("SELECT option1,option2,option3,option4 from questions where id=:id",array('id'=>$details['ques_id']));
+			$ans=$model->first("SELECT A,B,C,D from questions where id=:id",array('id'=>$details['ques_id']));
 			$details['answerf']=$ans->$option;
 		}else{
 			$details['ansoption']='';
@@ -139,6 +139,10 @@ class Users extends Model
 
 	public static function user_details(){
 		return (new self)->select("SELECT a.*,b.* FROM `users` a  left join user_quizes b on b.user_id=a.id WHERE a.id=:id",array('id'=>Users::auth()->id))[0];
+	}
+
+	public static function getLastquest($details){
+		return (new self)->select("SELECT ques_num from user_logs where user_id=:user_id order by id desc limit 1",array('user_id'=>$details->id));
 	}
 }
 ?>

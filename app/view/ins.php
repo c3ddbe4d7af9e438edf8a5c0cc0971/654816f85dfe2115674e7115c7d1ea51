@@ -85,9 +85,14 @@ $is_start=$data['user_details']->is_start;
                     <p for=""><?=$user->roll_code?></p>
                   </div>
                   <div class="profile_info">
-                    <img src="/image/<?=$user->profile_pic?>" width="100px" height="100px"> </div>
+                     <b>Profile Pic:</b> 
+                     <br><img src="uploads/photo/<?=$user->profile_pic?>" width="120px" height="100px">
+                     </div>
                     <div class="profile_info">
-                      <p for="">sign:</p>
+                      <b>Sign: </b> 
+                     <br><img src="uploads/sign/<?=$user->sig_pic?>" width="120px" height="60px">
+                      </div>
+
                     </div>
                     <div class="profile_info">
                       <p for="">Auth sign:</p>

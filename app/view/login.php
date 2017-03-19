@@ -48,12 +48,12 @@ $is_login_error=(isset($data['is_login_error'])&&$data['is_login_error']=='1')?'
             <div class="form-group">
               <label for="exampleInputEmail1">Refrence Id:</label>
               <input type="text" class="form-control" id="text" placeholder="Refrence Id" name="reference_id" style="background:white; color:black;">
-              <br>
+      
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password:</label>
               <input type="password" class="form-control" id="password" placeholder="Password" name="password" style="background:white; color:black;">
-              <br>
+             
             </div>
             <div class="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4">
               <button type="submit" class="login_btn">Sign in</button>
