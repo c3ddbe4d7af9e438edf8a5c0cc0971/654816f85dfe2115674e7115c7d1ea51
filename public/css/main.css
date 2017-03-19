@@ -379,6 +379,7 @@ td {
     font-weight: 600;
     font-size: 1em;
     padding-left: 0;
+    cursor: pointer;
 }
 
 .condition_custom2{

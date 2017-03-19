@@ -107,6 +107,7 @@ function loadUres(type=''){
     url:'/res?type='+type,
   }).done(function(data){
     $(".ures").html(data);
+    sc();
   });
 }
 $(document).on('click','.qsrn',function(){
@@ -288,9 +289,15 @@ $(document).ready(function(){
   $(document).on('click','.status_text',function(){
     var type=$(this).attr("data-type");
     loadUres(type);
-    
   });
 });
+function sc(){
+  var total_ques=<?=$user->total_ques?>;
+  var ques_num=$('.ques').attr('data-id');
+  var h=($('.numbers')[0].scrollHeight);
+  h=h*(ques_num-4)/(total_ques);
+  $('.numbers').scrollTop(h);
+}
 
 </script>
 
