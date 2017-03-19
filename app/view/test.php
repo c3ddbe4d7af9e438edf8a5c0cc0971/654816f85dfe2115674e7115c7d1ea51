@@ -102,9 +102,9 @@ function loadQues(ques_num){
     $(".ques_holder").html(data);
   });
 }
-function loadUres(){
+function loadUres(type=''){
  $.ajax({
-    url:'/res/',
+    url:'/res?type='+type,
   }).done(function(data){
     $(".ures").html(data);
   });
@@ -282,5 +282,17 @@ $(document).ready(function(){
 
 
 </script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(document).on('click','.status_text',function(){
+    var type=$(this).attr("data-type");
+    loadUres(type);
+    
+  });
+});
+
+</script>
+
 </body>
 </html>

@@ -62,8 +62,27 @@ class Users extends Model
 		return $sql;
 	}
 	public static function getRes($details){
-		return (new self)->SELECT("SELECT b.*,a.id as q_id FROM questions a
-		 left join user_answers b on b.ques_id=a.id and b.user_id=:user_id where a.quiz_id=:quiz_id order by b.ques_num asc",array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
+		$sql="SELECT b.*,a.id as q_id FROM questions a
+		 left join user_answers b on b.ques_id=a.id and b.user_id=:user_id where a.quiz_id=:quiz_id";
+		 if(!empty($details['type'])){
+		 	if($details['type']=='1'){
+		 		$sql.=" AND b.answer!='' and b.mark=0 ";
+		 	}
+		 	if($details['type']=='2'){
+		 		$sql.=" AND b.mark=1 and b.answer='' ";
+		 	}
+		 	if($details['type']=='3'){
+		 		$sql.=" AND b.answer!='' and mark=1 ";
+		 	}
+		 	if($details['type']=='4'){
+		 		$sql.=" AND b.visited=1 and b.answer='' and b.mark=0 ";
+		 	}
+		 	if($details['type']=='5'){
+		 		$sql.=" AND b.visited=0 ";
+		 	}
+		 }
+		$sql.=" order by b.ques_num asc";
+		return (new self)->SELECT($sql,array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
 	}
 
 	public static function postMark($id){

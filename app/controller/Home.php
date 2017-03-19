@@ -51,6 +51,7 @@ class Home
 		return View::make('ques',['ques'=>$ques,'user'=>$user,'language'=>$language]);
 	}
 	public function getRes(){
+		$details=Input::get(array('type'));
 		$user=Users::auth();
 		$details['quiz_id']=$user->quiz_id;
 		$details['user_id']=$user->id;

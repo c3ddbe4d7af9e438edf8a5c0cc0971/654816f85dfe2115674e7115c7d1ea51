@@ -53,7 +53,7 @@ $user=$data['user'];
         </div>
         </div>
          <div class="col-md-10 col-xs-10" style="margin-bottom:3px;">
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:38px;margin-top:-23px;">
+        <div class="col-md-12 col-xs-12 status_text" data-type="1" style="margin-left:38px;margin-top:-23px;">
           Answered
         </div>
         </div>
@@ -65,7 +65,7 @@ $user=$data['user'];
         </div>
 
          <div class="col-md-10 col-xs-10">
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:38px;margin-top:-27px;">
+        <div class="col-md-12 col-xs-12 status_text" data-type="3" style="margin-left:38px;margin-top:-27px;">
           Review
         </div>
         </div>
@@ -76,7 +76,7 @@ $user=$data['user'];
         </div>
 
          <div class="col-md-10 col-xs-10">
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:38px;margin-top:-27px; padding-bottom:2px;">
+        <div class="col-md-12 col-xs-12 status_text" data-type="5" style="margin-left:38px;margin-top:-27px; padding-bottom:2px;">
          Not&nbsp;Viewed
         </div>
         </div>
@@ -92,19 +92,30 @@ $user=$data['user'];
         </div>
 
          <div class="col-md-10 col-xs-10">
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:38px;margin-top:-20px; padding-bottom:2px;">
+        <div class="col-md-12 col-xs-12 status_text" data-type="2" style="margin-left:38px;margin-top:-20px; padding-bottom:2px;">
           Marked
         </div>
         </div>
         <div class="col-md-1 col-xs-1">
-     
-        <div class="col-md-12 col-xs-12 Review red">
-        </div>
+
+          <div class="col-md-12 col-xs-12 Review red">
+          </div>
         </div>
 
-         <div class="col-md-11 col-xs-11">
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:38px;margin-top:-27px;">
+        <div class="col-md-11 col-xs-11">
+          <div class="col-md-12 col-xs-12 status_text" data-type="4" style="margin-left:38px;margin-top:-27px;">
            Not&nbsp;Answered
+         </div>
+       </div>
+         <div class="col-md-1 col-xs-1">
+
+          <div class="col-md-12 col-xs-12 Review aqua">
+          </div>
+        </div>
+
+        <div class="col-md-11 col-xs-11">
+          <div class="col-md-12 col-xs-12 status_text" data-type="" style="margin-left:38px;margin-top:-27px;">
+           All
         </div>
         </div>
         </div>
