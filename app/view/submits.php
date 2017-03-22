@@ -35,13 +35,13 @@ $user=$data['user'];
 <div class="col-md-6 col-md-offset-3">
 
 <h1 class="exit_page">
-  
-You Have Successfully Completed the Exam Please Cick on Below Button to Exit
+     THANK YOU !!<br>
+You Have Successfully Completed the Exam. You Should leave Now.
 
 </h1>
 
 <div class="col-md-6 col-md-offset-5 col-xs-5 col-xs-offset-5">
-<button type="button" class="btn btn-primary">Exit</button>
+<!-- <button type="button" class="btn btn-primary">Exit</button> -->
 </div>
 
 </div>

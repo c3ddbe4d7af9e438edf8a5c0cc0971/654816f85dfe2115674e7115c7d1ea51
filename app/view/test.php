@@ -46,8 +46,8 @@ $left=($duration-$time);
                   Instriction
                 </a>
               </li>
-              <li class = "active pull-right">
-                <a href = "/" style="cursor: pointer;">
+              <li class = "active pull-right ">
+                <a href = "#" class="profile11" style="cursor: pointer;">
                   Profile
                 </a>
               </li>
@@ -84,6 +84,7 @@ $left=($duration-$time);
           <section class='actions'></section>
         </div>
         <div class="ures">
+
         </div>
       </div>
     </div>
@@ -133,6 +134,8 @@ $(document).on('click','.mrn',function(){
     if (result.success=='1') {
       if (q.attr('data-last')=='0') {
         loadQues(parseInt(q.attr('data-ques_num'))+1);
+      }else{
+        alert("This is Last Question");
       }
       //loadUres();
     }
@@ -155,6 +158,8 @@ $(document).on('click','.mrns',function(){
     if (result.success=='1') {
       if (q.attr('data-last')=='0') {
         loadQues(parseInt(q.attr('data-ques_num'))+1);
+      }else{
+        alert("This is Last Question");
       }
       //loadUres();
     }
@@ -177,6 +182,8 @@ $(document).on('click','.sn',function(){
     if (result.success=='1'){
       if (q.attr('data-last')=='0') {
         loadQues(parseInt(q.attr('data-ques_num'))+1);
+      }else{
+        alert("This is Last Question");
       }
         //loadUres();
       }
@@ -200,6 +207,9 @@ $(document).on('click','.clr',function(){
       $(".nameres input[type='radio']:checked").prop('checked', false);
       if (q.attr('data-last')=='0') {
         loadQues(parseInt(q.attr('data-ques_num'))+1);
+      }
+      else{
+        alert("This is Last Question");
       }
       //loadUres();
     }
@@ -298,8 +308,21 @@ function sc(){
   h=h*(ques_num-4)/(total_ques);
   $('.numbers').scrollTop(h);
 }
+$(document).on('click','.profile11',function(){
+ $.ajax({
+    url:'/profile',
+    method:'GET',
+  }).done(function(data){
+
+      window.location.href="/profile";
+     
+
+  });
+  return false;
+});
 
 </script>
+
 
 </body>
 </html>

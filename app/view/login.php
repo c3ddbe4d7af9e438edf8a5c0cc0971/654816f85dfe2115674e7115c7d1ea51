@@ -47,12 +47,12 @@ $is_login_error=(isset($data['is_login_error'])&&$data['is_login_error']=='1')?'
           <form action="/login" method="POST">
             <div class="form-group">
               <label for="exampleInputEmail1">Refrence Id:</label>
-              <input type="text" class="form-control" id="text" value="1" placeholder="Refrence Id" name="reference_id" style="background:white; color:black;">
+              <input type="text" class="form-control" id="text" placeholder="Refrence Id" name="reference_id" style="background:white; color:black;">
       
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password:</label>
-              <input type="password" class="form-control" id="password" value="1" placeholder="Password" name="password" style="background:white; color:black;">
+              <input type="password" class="form-control" id="password" placeholder="Password" name="password" style="background:white; color:black;">
              
             </div>
             <div class="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4">
@@ -76,6 +76,14 @@ $is_login_error=(isset($data['is_login_error'])&&$data['is_login_error']=='1')?'
         if(is_login=='1'){
           openerNew();
         }
+
+        window.onbeforeunload = confirmExit;
+        function confirmExit() {
+        if (isAnyTaskInProgress) {
+           return "Some task is in progress. Are you sure, you want to close?";
+        }
+    }
+
     </script>
 </body>
 </html>

@@ -13,9 +13,28 @@ class Home
 	}
 
 	public function getHome(){
+		$details=Input::get(array('type'));
+		$user=Users::auth();
+		$details['quiz_id']=$user->quiz_id;
+		$details['user_id']=$user->id;
+		$res=Users::getRes($details);
+		$language=Users::getLang($details);
+		//return View::make('res',['res'=>$res,'user'=>$user]);
 		$user=Users::auth();
 		$data=Users::getInstruction($user->quiz_id);
-		return View::make('ins',['instruction'=>$data,'user'=>$user,'user_details'=>Users::user_details()]);
+		return View::make('ins',['res'=>$res,'instruction'=>$data,'user'=>$user,'language'=>$language,'user_details'=>Users::user_details()]);
+	}
+
+	public function getProfile(){
+		$details=Input::get(array('type'));
+		$user=Users::auth();
+		$details['quiz_id']=$user->quiz_id;
+		$details['user_id']=$user->id;
+		$res=Users::getRes($details);
+		//return View::make('res',['res'=>$res,'user'=>$user]);
+		$user=Users::auth();
+		//$data=Users::getInstruction($user->quiz_id);
+		return View::make('profile',['res'=>$res,'user'=>$user,'user_details'=>Users::user_details()]);
 	}
 	public function getTest(){
 		$user=Users::auth();

@@ -2,7 +2,19 @@
 <?php
 $ins=$data['instruction'];
 $user=$data['user'];
+$res=$data['res'];
+
 $is_start=$data['user_details']->is_start;
+if($is_start==1){
+  $time=time()-$_SESSION['start_time'];
+$duration=$user->duration*60;
+$left=($duration-$time);
+}
+else{
+  $is_start='';
+}
+
+
 //Helper::pre($is_start);die();
 ?>
 <head>
@@ -28,20 +40,40 @@ $is_start=$data['user_details']->is_start;
     <div class="row">
       <div class="col-md-9 col-xs-12 left" style="height:560px">
         <div class="terms_condition">
-          <p class="condition_custom2">Test Format:</p>
-          <ul class="terms">
+          <div class="lang" style="margin-top: 5px;text-align:right;">
+            <select>
+              <option value="1" <?=$data['language']=='1'?'selected':''?>>English</option>
+              <option value="2" <?=$data['language']=='2'?'selected':''?>>Hindi</option>
+            </select>
+          </div>
+          <p class="condition_custom2 english <?=$data['language']=='1'?'show':'hide'?>">Test Format:</p>
+          <p class="condition_custom2 hindi <?=$data['language']=='2'?'show':'hide'?>">टेस्ट प्रारूप:</p>
+          <ul class="terms english <?=$data['language']=='1'?'show':'hide'?>">
             <?php
             foreach ($ins as $key => $value) { if($value->type==1){  ?>
             <li><?=$value->instruction?></li>
             <?php  } } ?>
           </ul>
+          <ul class="terms hindi <?=$data['language']=='2'?'show':'hide'?>">
+            <?php
+            foreach ($ins as $key => $value) { if($value->type==1){  ?>
+            <li><?=$value->instruction_h?></li>
+            <?php  } } ?>
+          </ul>
         </div>
         <div class="terms_condition">
-          <p class="condition_custom2">Navigation To Questions:</p>
-          <ul class="terms">
+          <p class="condition_custom2 english <?=$data['language']=='1'?'show':'hide'?>">Navigation To Questions:</p>
+          <p class="condition_custom2 hindi <?=$data['language']=='2'?'show':'hide'?>">नेविगेशन टू प्रश्न:</p>
+          <ul class="terms english <?=$data['language']=='1'?'show':'hide'?>">
             <?php
             foreach ($ins as $key => $value) { if($value->type==2){  ?>
             <li><?=$value->instruction?></li>
+            <?php  } } ?>
+          </ul>
+          <ul class="terms hindi <?=$data['language']=='2'?'show':'hide'?>">
+            <?php
+            foreach ($ins as $key => $value) { if($value->type==2){  ?>
+            <li><?=$value->instruction_h?></li>
             <?php  } } ?>
           </ul>
         </div>
@@ -65,6 +97,7 @@ $is_start=$data['user_details']->is_start;
         </div>
       </div><!-- left end here -->
       <!-- right -->
+      <?php if($is_start==0) { ?>
       <div class="col-md-3 col-xs-12 right">
         <div class="row profile">
           <h2 class="text-center">  
@@ -101,9 +134,28 @@ $is_start=$data['user_details']->is_start;
                     </div>
                   </div>
                 </div>
-                <!-- rightend here-->
+                
               </div>
+
+              
             </div>
+            <?php } else {?>
+            <div class="col-md-3 col-xs-12 right">
+        <div class=" col-md-12 col-xs-12 text-center custom_timer">
+        <img src="/uploads/photo/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
+          <div class="pic">
+            <p class="">Welcome :<?=$user->name?> </p>
+            <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>
+            
+          </div>
+          
+          <section class='actions'></section>
+        </div>
+        <div class="ures">
+        
+        </div>
+      </div>
+      <?php }?>
 <script type="text/javascript">
   $(document).ready(function(){
     $(".accept").click(function(){
@@ -119,7 +171,7 @@ $is_start=$data['user_details']->is_start;
         }).done(function(data){
           result=$.parseJSON(data);
           if (result.success=='1') {
-          
+
             window.location.href='/test';
 
           }else{
@@ -138,27 +190,45 @@ $is_start=$data['user_details']->is_start;
         alert('Please Select language');
       }
       $.ajax({
-          url:'/langsubmit',
-          method:"POST",
-          data:'language='+v
-        }).done(function(data){
-          result=$.parseJSON(data);
-          if (result.success=='1') {
-            console.log(result.data.language);
-          }else{
-            alert('Server Error');
-          }
-        });
-      
+        url:'/langsubmit',
+        method:"POST",
+        data:'language='+v
+      }).done(function(data){
+        result=$.parseJSON(data);
+        if (result.success=='1') {
+          console.log(result.data.language);
+        }else{
+          alert('Server Error');
+        }
+      });
+
     });
-
-
-
-
-
-
-
+    $(document).ready(function(){
+      loadUres();
+      $(document).on('click','.status_text',function(){
+        var type=$(this).attr("data-type");
+        loadUres(type);
+      });
+    })
+    function loadUres(type=''){
+     $.ajax({
+      url:'/res?type='+type,
+    }).done(function(data){
+      $(".ures").html(data);
+      sc();
+    });
+  }
+  $(document).on('change',function(){
+    var a=$('.lang option:selected').val();
+    if(a=='1'){
+      $('.english').addClass('show').removeClass('hide');
+      $('.hindi').addClass('hide').removeClass('show');
+    } else{
+      $('.english').addClass('hide').removeClass('show');
+      $('.hindi').addClass('show').removeClass('hide');
+    }
   })
+  });
 </script>
 </body>
 </html>
