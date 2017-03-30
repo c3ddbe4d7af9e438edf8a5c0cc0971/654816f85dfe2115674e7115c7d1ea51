@@ -35,17 +35,18 @@ else{
 <body>
   <div class="container-fluid">
     <div class="custom_nav">
-    <img src="/image/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
+    <img src="/uploads/logo/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
     margin:-10px 15px 15px 10px;">
-      <h1 class="text-center" style="position: relative; margin:-63px -13px 0px 10px;"><?=$user->quiz_name?></h1>
+     <h3 class="text-center" style="color:#fff;position: relative; margin:-80px -13px 0px 10px;"><?=$user->quiz_title?></h3>
+      <h4 class="text-center" style="color:#fff;"><?=$user->quiz_name?></h4>
     </div>
     <div class="row">
-      <div class="col-md-9 col-xs-12 left" style="height:586px">
+      <div class="col-md-9 col-xs-12 left" style="height:570px">
       
         <div class="row">
           <h2 class="text-center">  
              Profile Details</h2>
-            <div class="col-md-12 col-md-offset-3" style="border:3px solid black; width :483px; height:200px;">
+            <div class="col-md-12 col-md-offset-3" style="border:2px solid black; width :483px; height:200px;">
 
               <div class="profile_info">
                 <p for="">Name :</p>
@@ -70,13 +71,13 @@ else{
                     <p for=""><?=$user->roll_code?></p>
                   </div>
                    <div class="profile_info">
-                    <p for="">Center code :</p>
+                    <p for="">Category :</p>
                     <p for=""><?=$user->category?></p>
                   </div>
-                  <div class="" style="position:relative; left:341px; top:-180px;">
+                  <div class="" style="position:relative; left:344px; top:-180px;">
                      <br><img src="uploads/photo/<?=$user->profile_pic?>" width="120px" height="100px">
                      </div>
-                    <div class="" style="position:relative; left:341px; top:-194px;">
+                    <div class="" style="position:relative; left:344px; top:-194px;">
                      <br><img src="uploads/sign/<?=$user->sig_pic?>" width="120px" height="60px">
                       </div>
                     </div>
@@ -87,15 +88,21 @@ else{
                 </div>
                   <div class="col-md-3 col-xs-12 right">
         <div class=" col-md-12 col-xs-12 text-center custom_timer">
-        <img src="/uploads/photo/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
+        <!-- <img src="/uploads/photo/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
           <div class="pic">
             <p class="">Welcome :<?=$user->name?> </p>
-            <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>
+            <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p> -->
+            <img src="/uploads/photo/<?=$user->profile_pic?>" width="85" height="85" style="margin-top:5px;margin-bottom:5px;margin-left: -25px; float:left;">
+          <div class="pic">
+            <p class="" style="font-size:12px; min-width:20px;"><b><span style="font-size:1.7em;">Welcome</span></b> &nbsp;<br><strong><?=$user->name?></strong></p>
+            <p class="timer-style" style="margin-left:15px;font-size:1.4em;"><b>Time left </b>:&nbsp;</p><p class='timer timer-style' data-seconds-left="<?=$left?>" style="font-size:1.5em;"></p>
             
+          
           </div>
           
           <section class='actions'></section>
-        </div><div class="ures">
+        </div>
+        <div class="ures">
         <?php include('res.php');?>
         </div>
        
@@ -109,10 +116,7 @@ else{
           
       
       </div>
-     
-             
-           
-              <div class="col-md-2 col-md-offset-4 col-xs-12 custom_default_btn goto_test " style="cursor:pointer;position:relative;right:50px;top:-308px;"> <a href="/test" style="color:#fff;"> Go To Test</a></div>
+ <div class="col-md-2 col-md-offset-4 col-xs-12 custom_default_btn goto_test " style="cursor:pointer;position:relative;right:50px;top:-290px;"> <a href="/test" style="color:#fff;"> Go To Test</a></div>
         
       </div>
     
@@ -164,6 +168,13 @@ else{
         });
       
     });
+     $(document).ready(function(){
+      loadUres();
+      $(document).on('click','.status_text',function(){
+        var type=$(this).attr("data-type");
+        loadUres(type);
+      });
+    })
 
 function loadUres(type=''){
  $.ajax({

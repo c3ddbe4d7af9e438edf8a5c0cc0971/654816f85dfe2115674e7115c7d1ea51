@@ -25,7 +25,7 @@ $user=$data['user'];
 
 <div class="container-fluid">
 	<div class="custom_nav">
-		<img src="/image/<?=$user->logo?>" width="100px" height="100px">
+		<img src="/uploads/logo/<?=$user->logo?>" width="100px" height="100px">
 		<h1 class="text-center"><?=$user->quiz_name?></h1>
 	</div>
 

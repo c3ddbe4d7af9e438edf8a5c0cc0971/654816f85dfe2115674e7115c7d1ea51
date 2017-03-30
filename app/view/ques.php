@@ -19,8 +19,8 @@ if($ques->ques_num==$user->total_ques){
   <div class="left" style="height:375px;">
   <p class="heading_custom"> Question Type - Objective</p>
 
-  <p style="text-align: justify;" class="heading_custom1 hindi <?=$data['language']=='2'?'show':'hide'?>"> <?php if($ques->h_passage =='') {?> <?=$ques->passage ?><?php } else {?> <?=$ques->h_passage ?> <?php }?></p>
-  <p style="text-align: justify;" class="heading_custom1 english <?=$data['language']=='1'?'show':'hide'?>"> <?=$ques->passage?></p>
+  <p class="heading_custom1 hindi <?=$data['language']=='2'?'show':'hide'?> <?php if($ques->is_passage=='1'){echo 'passage_y';} else {echo 'passage_n';}?>"> <?php if($ques->h_passage =='') {?> <?=$ques->passage ?><?php } else {?> <?=$ques->h_passage ?> <?php }?></p>
+  <p class="heading_custom1 english <?=$data['language']=='1'?'show':'hide'?> <?php if($ques->is_passage=='1'){echo 'passage_y';} else {echo 'passage_n';}?>"> <?=$ques->passage?></p>
 
   <p class="heading_custom2"> Question no.<span id="ques_num"><?=$ques->ques_num?></span></p>
 <!-- </div> -->

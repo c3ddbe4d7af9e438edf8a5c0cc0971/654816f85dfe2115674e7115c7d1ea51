@@ -46,8 +46,8 @@ $is_login_error=(isset($data['is_login_error'])&&$data['is_login_error']=='1')?'
           <p style="color:red;display:<?=$is_login_error=='1'?'':'none'?>">Invalid reference id/password/already login</p>
           <form action="/login" method="POST">
             <div class="form-group">
-              <label for="exampleInputEmail1">Refrence Id:</label>
-              <input type="text" class="form-control" id="text" placeholder="Refrence Id" name="reference_id" style="background:white; color:black;">
+              <label for="exampleInputEmail1">Roll Number:</label>
+              <input type="text" class="form-control" id="text" placeholder="Roll Number" name="reference_id" style="background:white; color:black;">
       
             </div>
             <div class="form-group">

@@ -1,0 +1,5 @@
+ <script>
+    $(document).ready(function() {
+      $('#mybutton').hide().delay(3000).fadeIn(2200);
+});
+    </script>

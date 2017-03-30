@@ -10,14 +10,14 @@ $user=$data['user'];
     width: 10px;
     height: 27px;
     text-align: center;
-    margin: 2% 5%;
+    margin: 1.5% 3%;
   }
 </style>
 <div>
 <div class="right_down">
   <!-- <h1 class="text-center">Objective Section</h1> -->
   <p><b>Question palette:</b></h1>
-  <div class="row text-center numbers" style="width: 100%;height: 225px;overflow-y: scroll;overflow-x: hidden;">
+  <div class="row text-center numbers" style="width: 100%;height: 294px;overflow-y: scroll;overflow-x: hidden;">
     <?php
     foreach ($res as $key => $value) {
         $color='#fff';
@@ -104,7 +104,7 @@ $user=$data['user'];
 
         <div class="col-md-11 col-xs-11">
           <div class="col-md-12 col-xs-12 status_text" data-type="4" style="margin-left:38px;margin-top:-27px;">
-           Not&nbsp;Answered
+          Not&nbsp;Answered
          </div>
        </div>
          <div class="col-md-1 col-xs-1">
@@ -120,11 +120,10 @@ $user=$data['user'];
         </div>
         </div>
         </div>
-
-
-<div class="col-md-6 col-xs-12">
- <div class="row">
-    
+<div class="col-md-12 col-xs-12">
+ <div class="row" style="margin-top:2px;">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" class="button <?php if($time==$show_button) { echo 'enable';} else{ echo 'disabled';}?>" style="width:120px" id="mybutton" onclick="submitConfirmation()" value="Submit">
         </div>
         </div>
         </div>
@@ -211,3 +210,8 @@ $user=$data['user'];
   </div> -->
 </div>
 </div>
+<!--  <script>
+    $(document).ready(function() {
+      $('#mybutton').hide().delay(3000).fadeIn(2200);
+});
+    </script> -->

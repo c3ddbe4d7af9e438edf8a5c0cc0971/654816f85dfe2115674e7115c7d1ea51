@@ -1,9 +1,18 @@
 <?php
 $user=$data['user'];
+// echo '<pre>';print_r($user);die;
 $last_ques=$data['last_ques'][0]->ques_num;
 $time=time()-$_SESSION['start_time'];
+//echo time()-$_SESSION['start_time'];
+//echo $time;die;
 $duration=$user->duration*60;
+$button_timer=$user->button_timer*60;
+// echo $button_timer ; die;
+$show_button=$duration-$button_timer;
+ // echo $show_button; die;
+//echo $duration.'-'.$time.'<br>';
 $left=($duration-$time);
+ //echo $left;die;
 ?>
 <html>
   <head>
@@ -21,9 +30,10 @@ $left=($duration-$time);
 <body>
   <div class="container-fluid">
     <div class="custom_nav" >
-      <img src="/image/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
+      <img src="/uploads/logo/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
     margin:-10px 15px 15px 10px;">
-      <h1 class="text-center" style="position: relative; margin:-63px -13px 0px 10px;"><?=$user->quiz_name?></h1>
+      <h3 class="text-center" style="color:#fff;position: relative; margin:-80px -13px 0px 10px;"><?=$user->quiz_title?></h3>
+      <h4 class="text-center" style="color:#fff;"><?=$user->quiz_name?></h4>
     </div>
     <div class="row">
       <div class="col-md-9 col-xs-12">
@@ -43,7 +53,7 @@ $left=($duration-$time);
             <ul id = "myTab" class = "nav nav-tabs">
               <li class = "active pull-right">
                 <a href = "/" style="cursor: pointer;">
-                  Instriction
+                  Instruction
                 </a>
               </li>
               <li class = "active pull-right ">
@@ -74,10 +84,10 @@ $left=($duration-$time);
       </div>
       <div class="col-md-3 col-xs-12 right">
         <div class=" col-md-12 col-xs-12 text-center custom_timer">
-        <img src="/uploads/photo/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
+        <img src="/uploads/photo/<?=$user->profile_pic?>" width="85" height="85" style="margin-top:5px;margin-bottom:5px;margin-left: -25px; float:left;">
           <div class="pic">
-            <p class="">Welcome :<?=$user->name?> </p>
-            <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>
+            <p class="" style="font-size:12px; min-width:20px;"><b><span style="font-size:1.7em;">Welcome</span></b> &nbsp;<br><strong><?=$user->name?></strong></p>
+            <p class="timer-style" style="margin-left:15px;font-size:1.4em;"><b>Time left </b>:&nbsp;</p><p class='timer timer-style' data-seconds-left="<?=$left?>" style="font-size:1.5em;"></p>
             
           </div>
           
@@ -135,6 +145,7 @@ $(document).on('click','.mrn',function(){
       if (q.attr('data-last')=='0') {
         loadQues(parseInt(q.attr('data-ques_num'))+1);
       }else{
+        loadUres();
         alert("This is Last Question");
       }
       //loadUres();
@@ -159,6 +170,7 @@ $(document).on('click','.mrns',function(){
       if (q.attr('data-last')=='0') {
         loadQues(parseInt(q.attr('data-ques_num'))+1);
       }else{
+        loadUres();
         alert("This is Last Question");
       }
       //loadUres();
@@ -183,6 +195,7 @@ $(document).on('click','.sn',function(){
       if (q.attr('data-last')=='0') {
         loadQues(parseInt(q.attr('data-ques_num'))+1);
       }else{
+        loadUres();
         alert("This is Last Question");
       }
         //loadUres();
@@ -209,6 +222,7 @@ $(document).on('click','.clr',function(){
         loadQues(parseInt(q.attr('data-ques_num'))+1);
       }
       else{
+        loadUres();
         alert("This is Last Question");
       }
       //loadUres();

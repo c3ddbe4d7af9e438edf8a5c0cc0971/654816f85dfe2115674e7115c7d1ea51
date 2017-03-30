@@ -2,6 +2,7 @@
 <?php
 $ins=$data['instruction'];
 $user=$data['user'];
+//echo '<pre>';print_r($user); die;
 $res=$data['res'];
 
 $is_start=$data['user_details']->is_start;
@@ -33,9 +34,10 @@ else{
 <body>
   <div class="container-fluid">
     <div class="custom_nav">
-    <img src="/image/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
+    <img src="/uploads/logo/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
     margin:-10px 15px 15px 10px;">
-      <h1 class="text-center" style="position: relative; margin:-63px -13px 0px 10px;"><?=$user->quiz_name?></h1>
+     <h3 class="text-center" style="color:#fff;position: relative; margin:-80px -13px 0px 10px;"><?=$user->quiz_title?></h3>
+      <h4 class="text-center" style="color:#fff;"><?=$user->quiz_name?></h4>
     </div>
     <div class="row">
       <div class="col-md-9 col-xs-12 left" style="height:560px">
@@ -80,17 +82,19 @@ else{
         <div class="row response_bar">
           <div class="checkbox <?=$is_start?'hide':''?>">
             <label><input type="checkbox" id="accept" ><p class="cl_red">Accept Terms & Conditions</p></label>
-            <div class="lang_ins">
+            
+          </div>
+          <div class="lang_ins">
+            <label>If You Want Question in Hindi Or English Please Select Language</label>
             <select>
               <option value=0>Please select</option>
               <option value=1>English</option>
               <option value=2>Hindi</option>
             </select>
             </div>
-          </div>
 
             <?php if(!$is_start){  ?>
-              <div class="col-md-2 col-md-offset-5 col-xs-12 custom_default_btn accept  <?=$is_start?'hide':''?>" style="cursor:pointer"> I'm Ready To Begin</div>
+              <br><div class="col-md-2 col-md-offset-5 col-xs-12 custom_default_btn accept  <?=$is_start?'hide':''?>" style="cursor:pointer"> I'm Ready To Begin</div>
             <?php  }else{ ?>
               <div class="col-md-2 col-md-offset-5 col-xs-12 custom_default_btn goto_test " style="cursor:pointer"> <a href="/test" style="color:#fff"> Go To Test</a></div>
             <?php    } ?>
@@ -101,8 +105,8 @@ else{
       <div class="col-md-3 col-xs-12 right">
         <div class="row profile">
           <h2 class="text-center">  
-            Profile</h2>
-            <div class="col-md-10 col-md-offset-2">
+            Candidate Profile</h2>
+            <div class="col-md-10 col-md-offset-1">
               <div class="profile_info">
                 <p for="">Name :</p>
                 <p for=""><?=$user->name?></p>
@@ -118,17 +122,17 @@ else{
                     <p for=""><?=$user->roll_code?></p>
                   </div>
                   <div class="profile_info">
-                     <b>Profile Pic:</b> 
-                     <br><img src="uploads/photo/<?=$user->profile_pic?>" width="120px" height="100px">
+                     <b>Recent Photo:</b> 
+                     <img src="uploads/photo/<?=$user->profile_pic?>" width="120px" height="100px">
                      </div>
                     <div class="profile_info">
-                      <b>Sign: </b> 
-                     <br><img src="uploads/sign/<?=$user->sig_pic?>" width="120px" height="60px">
+                      <b>Signature: </b> 
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="uploads/sign/<?=$user->sig_pic?>" width="120px" height="60px">
                       </div>
 
                     </div>
                     <div class="profile_info">
-                      <p for="">Auth sign:</p>
+                      <p for="">Authority Signature:</p>
                     </div>
                     <div>
                     </div>
@@ -141,16 +145,25 @@ else{
             </div>
             <?php } else {?>
             <div class="col-md-3 col-xs-12 right">
-        <div class=" col-md-12 col-xs-12 text-center custom_timer">
-        <img src="/uploads/photo/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
+         <!--<div class=" col-md-12 col-xs-12 text-center custom_timer">
+         <img src="/uploads/photo/<?=$user->profile_pic?>" width="100px" height="100px" style="margin-top:10px;">
           <div class="pic">
             <p class="">Welcome :<?=$user->name?> </p>
             <p class="timer-style">Time left : </p> <p class='timer timer-style' data-seconds-left="<?=$left?>"></p>
             
+           </div>-->
+
+           <div class=" col-md-12 col-xs-12 text-center custom_timer">
+        <img src="/uploads/photo/<?=$user->profile_pic?>" width="85" height="85" style="margin-top:5px;margin-bottom:5px;margin-left: -25px; float:left;">
+          <div class="pic">
+            <p class="" style="font-size:12px; min-width:20px;"><b><span style="font-size:1.7em;">Welcome</span></b> &nbsp;<br><strong><?=$user->name?></strong></p>
+            <p class="timer-style" style="margin-left:15px;font-size:1.4em;"><b>Time left </b>:&nbsp;</p><p class='timer timer-style' data-seconds-left="<?=$left?>" style="font-size:1.5em;"></p>
+            
           </div>
           
-          <section class='actions'></section>
-        </div>
+           <section class='actions'></section>
+         </div>
+
         <div class="ures">
         
         </div>
