@@ -12,6 +12,8 @@ $show_button=$duration-$button_timer;
  // echo $show_button; die;
 //echo $duration.'-'.$time.'<br>';
 $left=($duration-$time);
+
+$showb=$left-$show_button;
  //echo $left;die;
 ?>
 <html>
@@ -335,6 +337,25 @@ $(document).on('click','.profile11',function(){
   return false;
 });
 
+</script>
+
+
+<script type="text/javascript">
+var showb="<?=$showb*1000?>";
+  $(document).ready(function(){
+    $(document).on('click','#mybutton',function(){
+      if(confirm("Do you really want to do submit?")){
+        window.location.href="/submit";
+      }
+      else{
+        return false;
+      }
+    })
+
+    setInterval(function(){
+      $('#mybutton').addClass('show');
+    },showb);
+  })
 </script>
 
 

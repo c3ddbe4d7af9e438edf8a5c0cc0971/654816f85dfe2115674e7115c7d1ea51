@@ -1,7 +1,12 @@
 <?php 
 $res=$data['res'];
 $user=$data['user'];
-//Helper::pre($res);die();
+
+$time=time()-$_SESSION['start_time'];
+$duration=$user->duration*60;
+$button_timer=$user->button_timer*60;
+$show_button=$duration-$button_timer;
+$left=($duration-$time);
 ?>
 
 <style type="text/css">
@@ -123,7 +128,7 @@ $user=$data['user'];
 <div class="col-md-12 col-xs-12">
  <div class="row" style="margin-top:2px;">
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="button" class="button <?php if($time==$show_button) { echo 'enable';} else{ echo 'disabled';}?>" style="width:120px" id="mybutton" onclick="submitConfirmation()" value="Submit">
+    <input type="button" class="button <?=$left<$show_button?'show':'hide'?>" style="width:120px" id="mybutton" value="Submit">
         </div>
         </div>
         </div>
