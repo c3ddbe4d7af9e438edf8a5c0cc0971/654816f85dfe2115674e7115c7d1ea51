@@ -1,20 +1,12 @@
 <?php
 $user=$data['user'];
-// echo '<pre>';print_r($user);die;
 $last_ques=$data['last_ques'][0]->ques_num;
 $time=time()-$_SESSION['start_time'];
-//echo time()-$_SESSION['start_time'];
-//echo $time;die;
 $duration=$user->duration*60;
 $button_timer=$user->button_timer*60;
-// echo $button_timer ; die;
 $show_button=$duration-$button_timer;
- // echo $show_button; die;
-//echo $duration.'-'.$time.'<br>';
 $left=($duration-$time);
-
 $showb=$left-$show_button;
- //echo $left;die;
 ?>
 <html>
   <head>
@@ -303,7 +295,28 @@ $(document).ready(function(){
       $('.english').addClass('hide').removeClass('show');
       $('.hindi').addClass('show').removeClass('hide');
     }
-  })
+  });
+
+    var ft=setInterval(function(){
+   $.ajax({
+    url:'/failure_time',
+    method:'POST',
+  }).done(function(data){
+    result=$.parseJSON(data);
+    if (result.success=='1') {
+      //alert('hello');
+     /* if(result.data[0].count<4){
+        alert('please do somthing');
+        $(document).trigger('click');
+        return false;
+      }
+      else{
+        window.location.href="/submit";
+        return false;
+      }*/
+    }
+  });
+  },2000);
 
 });
 

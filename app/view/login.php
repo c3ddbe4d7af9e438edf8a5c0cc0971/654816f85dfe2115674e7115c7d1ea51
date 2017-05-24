@@ -68,7 +68,8 @@ $is_login_error=(isset($data['is_login_error'])&&$data['is_login_error']=='1')?'
             var params =  'top=0, left=0';
             params += ', width='+screen.width+', height='+screen.height+',statusbar=no,toolbar=no,location=no,directories=no,menubar=no,resizable=no';
             params += ', scrollbars=yes, status=no, fullscreen=yes';
-            newwin=window.open("/","_blank",params);
+            // newwin=window.open("/","_blank",params);
+            newwin=window.open("/",params);
             if (window.focus) {newwin.focus()}
               return false;
         }
@@ -83,7 +84,17 @@ $is_login_error=(isset($data['is_login_error'])&&$data['is_login_error']=='1')?'
            return "Some task is in progress. Are you sure, you want to close?";
         }
     }
-
+   $(document).ready(function() {
+    $(document)[0].oncontextmenu = function() { return false; }
+    $(document).mousedown(function(e) {
+        if( e.button == 2 ) {
+            alert('Sorry, this functionality is disabled!');
+            return false;
+        } else {
+            return true;
+        }
+    });
+});
     </script>
 </body>
 </html>

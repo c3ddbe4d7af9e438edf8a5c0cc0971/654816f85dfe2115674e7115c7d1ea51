@@ -49,29 +49,29 @@ else{
             <div class="col-md-12 col-md-offset-3" style="border:2px solid black; width :483px; height:200px;">
 
               <div class="profile_info">
-                <p for="">Name :</p>
+                <p for=""><b>Name :</b></p>
                 <p for=""><?=$user->name?></p>
               </div>
               <div class="profile_info">
-                <p for=""> Father's Name :</p>
+                <p for=""><b> Father's Name :</b></p>
                 <p for=""><?=$user->father_name?></p>
               </div>
       
                 <div class="profile_info">
-                  <p for="">Roll Number :</p>
+                  <p for=""><b>Roll Number :</b></p>
                   <p for=""><?=$user->roll_num?></p>
                 </div>
                 <div class="profile_info">
-                  <p for="">Registration Number :</p>
+                  <p for=""><b>Registration Number :</b></p>
                   <p for=""><?=$user->reg_num?></p>
                 </div>
                 
                   <div class="profile_info">
-                    <p for="">Center code :</p>
+                    <p for=""><b>Center code :</b></p>
                     <p for=""><?=$user->roll_code?></p>
                   </div>
                    <div class="profile_info">
-                    <p for="">Category :</p>
+                    <p for=""><b>Category :</b></p>
                     <p for=""><?=$user->category?></p>
                   </div>
                   <div class="" style="position:relative; left:344px; top:-180px;">

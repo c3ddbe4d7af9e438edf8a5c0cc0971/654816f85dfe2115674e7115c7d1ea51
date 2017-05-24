@@ -22,7 +22,7 @@ $left=($duration-$time);
 <div class="right_down">
   <!-- <h1 class="text-center">Objective Section</h1> -->
   <p><b>Question palette:</b></h1>
-  <div class="row text-center numbers" style="width: 100%;height: 294px;overflow-y: scroll;overflow-x: hidden;">
+  <div class="row text-center numbers" style="width: 100%;height:280px;overflow-y: scroll;overflow-x: hidden;">
     <?php
     foreach ($res as $key => $value) {
         $color='#fff';
@@ -125,94 +125,20 @@ $left=($duration-$time);
         </div>
         </div>
         </div>
-<div class="col-md-12 col-xs-12">
- <div class="row" style="margin-top:2px;">
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="button" class="button <?=$left<$show_button?'show':'hide'?>" style="width:120px" id="mybutton" value="Submit">
-        </div>
-        </div>
+
         </div>
 
-   
-
-
-        <!-- <div class="col-md-12 col-xs-12 Review cyan">
-        </div>
-        <div class="col-md-12 col-xs-12 Review blue">
-        </div>
-        <div class="col-md-12 col-xs-12 Review red">
-        </div>
-        <div class="col-md-12 col-xs-12 Review white" style="border-radius: 0">
-        </div> -->
       </div>
     </div>
-    <!-- <div class="col-md-10 col-xs-10">
-      <div class="row">
-        <div class="col-md-12 col-xs-12 status_text">
-          Answered
+
+      <div class="col-md-12 col-xs-12">
+ <div class="row" style=" margin-top:2px">
+    <input type="button" class="button btn-primary <?=$left<$show_button?'show':'hide'?>" style="width:120px" id="mybutton" value="Submit">
         </div>
-        <div class="col-md-12 col-xs-12 status_text">
-          Review
         </div>
-        <div class="col-md-12 col-xs-12 status_text">
-          Marked
-        </div>
-        
-        <div class="col-md-12 col-xs-12 status_text">
-          Not Answered
-        </div>
-        <div class="col-md-12 col-xs-12 status_text">
-          Not Viewed
-        </div>
-      </div>
-    </div> -->
-    <div class="row">
-      <div class="col-md-12">
-        <!-- <button type="button" class="btn btn-default cus_btn sbmt">Submit</button> -->
-      </div>
-    </div>
+
   </div>
-  <!-- <div class="status">
-    <div class="col-md-3 col-xs-3">
-      <div class="row">
-        <div class="col-md-12 col-xs-12 Review green">
-        </div>
-        <div class="col-md-12 col-xs-12 Review cyan" style="margin-left:150px; margin-top:-25px;">
-        </div>
-        <div class="col-md-12 col-xs-12 Review blue">
-        </div>
-        <div class="col-md-12 col-xs-12 Review red" style="margin-left:150px; margin-top:-25px;">
-        </div>
-        <div class="col-md-12 col-xs-12 Review white" style="border-radius: 0">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-9 col-xs-9">
-      <div class="row">
-        <div class="col-md-12 col-xs-12 status_text">
-          Answered
-        </div>
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:117px; margin-top:-35px;">
-          Review
-        </div>
-        <div class="col-md-12 col-xs-12 status_text">
-          Marked
-        </div>
-        
-        <div class="col-md-12 col-xs-12 status_text" style="margin-left:112px; margin-top:-25px;">
-          Not Answered
-        </div>
-        <div class="col-md-12 col-xs-12 status_text">
-          Not Viewed
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-         <button type="button" class="btn btn-default cus_btn sbmt">Submit</button> 
-      </div>
-    </div>
-  </div> -->
+
 </div>
 </div>
 <!--  <script>

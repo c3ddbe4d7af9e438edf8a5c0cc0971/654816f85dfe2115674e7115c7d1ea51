@@ -8,13 +8,24 @@ class Users extends Model
 		$model=new self;
 		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.title as quiz_title, b.logo,b.duration,b.total_ques,b.status as quiz_status,b.button_timer FROM users a
 			left join quizzes b on b.id=a.quiz_id
-		 WHERE roll_num=:reference_id and is_login=0",array('reference_id'=>$details['reference_id']));
+		 WHERE a.roll_num=:reference_id and a.is_login=0",array('reference_id'=>$details['reference_id']));
 	}
 	public static function auth(){
 		if (isset($_SESSION['user'])) {
 			return json_decode($_SESSION['user']);
 		}
 		return false;
+	}
+public static function update_login_time($user_id,$login_at)
+{
+	$model 			= 	new self;
+	$admins 		= 	$model->UPDATE("UPDATE users SET login_at=? WHERE id=?",[$login_at,$user_id]);
+	return $admins;
+}
+
+	public static function update_login_time_user_quizzes($details){
+		var_dump($details);
+		return (new self)->update("UPDATE user_quizes set started_time=:started_time where user_id=:user_id and quiz_id=:quiz_id",array('started_time'=>$details['started_time'],'user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
 	}
 
 	public static function getQues($details){
@@ -147,9 +158,14 @@ class Users extends Model
 		return $model->select("SELECT * from user_quizes where user_id=:user_id and quiz_id=:quiz_id",array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
 
 	}
+
+	public static function update_failure_time($details){
+		return (new self)->update("UPDATE user_quizes set failure_time=:failure_time where user_id=:user_id and quiz_id=:quiz_id",array('user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id'],'failure_time'=>$details['failure_time']));
+	}
+
 	public static function langSubmit($details){
 		$model=new self;
-		return $model->sql("INSERT INTO user_quizes (user_id,quiz_id,language) values (:user_id,:quiz_id,:language) ON DUPLICATE KEY UPDATE language=:language",$details);
+		return $model->sql("INSERT INTO user_quizes (user_id,quiz_id,started_time,language) values (:user_id,:quiz_id,:started_time,:language) ON DUPLICATE KEY UPDATE language=:language",$details);
 	}
 
 	public static function getLang($details){

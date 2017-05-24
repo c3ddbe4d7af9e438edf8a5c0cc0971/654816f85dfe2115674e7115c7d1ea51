@@ -46,13 +46,16 @@ class Home
 		return View::make('test',['user'=>$user,'last_ques'=>$last_ques]);
 	}
 	public function insertQues(){
-		$user=Users::auth();
-		$_SESSION['start_time']=time();
-		$details['quiz_id']=$user->quiz_id;
-		$details['user_id']=$user->id;
+		$user 					= Users::auth();
+		$login_at 				= date("d-m-Y h:i:s");
+		$_SESSION['start_time'] = time();
+		$details['quiz_id'] 	= $user->quiz_id;
+		$details['user_id'] 	= $user->id;
+		$details['started_time']=date("y-m-d h:i:s");
 		if(!Users::getStatus($details)){
-			$ques=Users::insertQues($details);
-			$is_login=Users::is_login($details);
+			$update_user1 		= Users::update_login_time_user_quizzes($details);
+			$ques 				= Users::insertQues($details);
+			$is_login 			= Users::is_login($details);
 		}else{
 			$ques=true;
 		}
@@ -120,7 +123,21 @@ class Home
 		$user=Users::auth();
 		$details['quiz_id']=$user->quiz_id;
 		$details['user_id']=$user->id;
+		$details['cur_time']= date('H:i');
 		$data=Users::alert_submit($details);
+		if(false!==$data){
+			return Json::make('1','details are',$data)->response();
+		}
+		return Json::make('0','Server Error')->response();
+	}
+
+	public function failure_time(){
+		$user 						= Users::auth();
+		$details['quiz_id'] 		= $user->quiz_id;
+		$details['user_id'] 		= $user->id;
+		$details['failure_time'] 	= date("y-m-d h:i:s");
+		
+		$data=Users::update_failure_time($details);
 		if(false!==$data){
 			return Json::make('1','details are',$data)->response();
 		}
@@ -130,6 +147,7 @@ class Home
 	public function langSubmit(){
 		$details=Input::post(array('language'));
 		$user=Users::auth();
+		$details['started_time'] = date("y-m-d h:i:s");
 		$details['quiz_id']=$user->quiz_id;
 		$details['user_id']=$user->id;
 		$data=Users::langSubmit($details);

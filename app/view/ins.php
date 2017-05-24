@@ -104,21 +104,21 @@ else{
       <?php if($is_start==0) { ?>
       <div class="col-md-3 col-xs-12 right">
         <div class="row profile">
-          <h2 class="text-center">  
+          <h2 class="text-center" style="border-bottom:1px solid black;">  
             Candidate Profile</h2>
             <div class="col-md-10 col-md-offset-1">
               <div class="profile_info">
-                <p for="">Name :</p>
+                <p for=""><b>Name :</b></p>
                 <p for=""><?=$user->name?></p>
               </div>
               <div>
                 <div class="profile_info">
-                  <p for="">Roll Number :</p>
+                  <p for=""><b>Roll Number :</b></p>
                   <p for=""><?=$user->roll_num?></p>
                 </div>
                 <div>
                   <div class="profile_info">
-                    <p for="">Center code :</p>
+                    <p for=""><b>Center code :</b></p>
                     <p for=""><?=$user->roll_code?></p>
                   </div>
                   <div class="profile_info">
@@ -132,7 +132,7 @@ else{
 
                     </div>
                     <div class="profile_info">
-                      <p for="">Authority Signature:</p>
+                      <p for=""><b>Authority Signature:</b></p>
                     </div>
                     <div>
                     </div>

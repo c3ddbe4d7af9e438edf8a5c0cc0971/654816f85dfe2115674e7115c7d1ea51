@@ -24,10 +24,17 @@ $user=$data['user'];
 <body>
 
 <div class="container-fluid">
-	<div class="custom_nav">
-		<img src="/uploads/logo/<?=$user->logo?>" width="100px" height="100px">
+	<!-- <div class="custom_nav_submit">
+		<img src="/uploads/logo/<?=$user->logo?>">
 		<h1 class="text-center"><?=$user->quiz_name?></h1>
-	</div>
+	</div> -->
+
+	    <div class="custom_nav" >
+      <img src="/uploads/logo/<?=$user->logo?>" width="100px" height="100px" style="position: relative;
+    margin:-10px 15px 15px 10px;">
+      <h3 class="text-center" style="color:#fff;position: relative; margin:-80px -13px 0px 10px;"><?=$user->quiz_title?></h3>
+      <h4 class="text-center" style="color:#fff;"><?=$user->quiz_name?></h4>
+    </div>
 
 
 <div class="row">
