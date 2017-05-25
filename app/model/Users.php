@@ -6,8 +6,9 @@ class Users extends Model
 {
 	public static function login($details){
 		$model=new self;
-		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.title as quiz_title, b.logo,b.duration,b.total_ques,b.status as quiz_status,b.button_timer FROM users a
+		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.title as quiz_title, b.logo,b.duration,b.total_ques,b.status as quiz_status,b.button_timer,c.*,TIMESTAMPDIFF(minute, started_time,failure_time ) as prev_duration FROM users a
 			left join quizzes b on b.id=a.quiz_id
+			left join user_quizes c on c.quiz_id=b.id and c.user_id=a.id
 		 WHERE a.roll_num=:reference_id and a.is_login=0",array('reference_id'=>$details['reference_id']));
 	}
 	public static function auth(){
@@ -16,16 +17,14 @@ class Users extends Model
 		}
 		return false;
 	}
-public static function update_login_time($user_id,$login_at)
-{
-	$model 			= 	new self;
-	$admins 		= 	$model->UPDATE("UPDATE users SET login_at=? WHERE id=?",[$login_at,$user_id]);
-	return $admins;
-}
+	public static function update_login_time($user_id,$login_at){
+		$model 			= 	new self;
+		$admins 		= 	$model->UPDATE("UPDATE users SET login_at=? WHERE id=?",[$login_at,$user_id]);
+		return $admins;
+	}
 
 	public static function update_login_time_user_quizzes($details){
-		var_dump($details);
-		return (new self)->update("UPDATE user_quizes set started_time=:started_time where user_id=:user_id and quiz_id=:quiz_id",array('started_time'=>$details['started_time'],'user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
+		return (new self)->update("UPDATE user_quizes set started_time=:started_time,is_fail=0 where user_id=:user_id and quiz_id=:quiz_id",array('started_time'=>$details['started_time'],'user_id'=>$details['user_id'],'quiz_id'=>$details['quiz_id']));
 	}
 
 	public static function getQues($details){
