@@ -2,7 +2,7 @@
 $res=$data['res'];
 $user=$data['user'];
 
-$time=time()-$_SESSION['start_time'];
+$time=time()-$_SESSION['started_time'];
 $duration=$user->duration*60;
 $button_timer=$user->button_timer*60;
 $show_button=$duration-$button_timer;

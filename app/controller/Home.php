@@ -48,7 +48,7 @@ class Home
 	public function insertQues(){
 		$user 					= Users::auth();
 		$login_at 				= date("d-m-Y h:i:s");
-		$_SESSION['start_time'] = time();
+		$_SESSION['started_time'] = date("y-m-d h:i:s");
 		$details['quiz_id'] 	= $user->quiz_id;
 		$details['user_id'] 	= $user->id;
 		$details['started_time']=date("y-m-d h:i:s");

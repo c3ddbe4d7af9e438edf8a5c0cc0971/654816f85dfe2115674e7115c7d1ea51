@@ -1,7 +1,7 @@
 <?php
 $user=$data['user'];
 $last_ques=$data['last_ques'][0]->ques_num;
-$time=time()-$_SESSION['start_time'];
+$time=time()-strtotime($_SESSION['started_time']);
 $duration=$user->duration*60;
 $button_timer=$user->button_timer*60;
 $show_button=$duration-$button_timer;

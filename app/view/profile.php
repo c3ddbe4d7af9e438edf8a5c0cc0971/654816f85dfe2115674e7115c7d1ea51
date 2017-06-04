@@ -8,7 +8,7 @@ $res=$data['res'];
 
 $is_start=$data['user_details']->is_start;
 if($is_start==1){
-  $time=time()-$_SESSION['start_time'];
+  $time=time()-$_SESSION['started_time'];
 $duration=$user->duration*60;
 $left=($duration-$time);
 }
