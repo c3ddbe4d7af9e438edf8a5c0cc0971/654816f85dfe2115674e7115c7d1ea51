@@ -152,6 +152,7 @@ class Home
 		$details['user_id']=$user->id;
 		$data=Users::langSubmit($details);
 		if(false!==$data){
+			$_SESSION['started_time'] = date("y-m-d h:i:s");
 			return Json::make('1','details are',$details['language'])->response();
 		}
 		return Json::make('0','Server Error')->response();

@@ -6,7 +6,7 @@ class Users extends Model
 {
 	public static function login($details){
 		$model=new self;
-		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.title as quiz_title, b.logo,b.duration,b.total_ques,b.status as quiz_status,b.button_timer,c.*,TIMESTAMPDIFF(minute, started_time,failure_time ) as prev_duration FROM users a
+		return $model->first("SELECT a.*,b.exam_id,b.name as quiz_name,b.title as quiz_title, b.logo,b.duration,b.total_ques,b.status as quiz_status,b.button_timer,c.started_time,c.failure_time,c.language,c.count,c.is_fail,TIMESTAMPDIFF(minute, started_time,failure_time ) as prev_duration FROM users a
 			left join quizzes b on b.id=a.quiz_id
 			left join user_quizes c on c.quiz_id=b.id and c.user_id=a.id
 		 WHERE a.roll_num=:reference_id and a.is_login=0",array('reference_id'=>$details['reference_id']));
@@ -172,7 +172,7 @@ class Users extends Model
 	}
 
 	public static function user_details(){
-		return (new self)->select("SELECT a.*,b.* FROM `users` a  left join user_quizes b on b.user_id=a.id WHERE a.id=:id",array('id'=>Users::auth()->id))[0];
+		return (new self)->select("SELECT a.*,b.id as user_quize_id,b.quiz_id,b.center_lab_id,b.started_time,b.failure_time,b.language,b.count,b.is_fail FROM `users` a  left join user_quizes b on b.user_id=a.id WHERE a.id=:id",array('id'=>Users::auth()->id))[0];
 	}
 
 	public static function getLastquest($details){

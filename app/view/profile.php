@@ -185,6 +185,27 @@ function loadUres(type=''){
   });
 }
 
+var ft=setInterval(function(){
+   $.ajax({
+    url:'/failure_time',
+    method:'POST',
+  }).done(function(data){
+    result=$.parseJSON(data);
+    if (result.success=='1') {
+      //alert('hello');
+     /* if(result.data[0].count<4){
+        alert('please do somthing');
+        $(document).trigger('click');
+        return false;
+      }
+      else{
+        window.location.href="/submit";
+        return false;
+      }*/
+    }
+  });
+  },2000);
+
 
 
 
