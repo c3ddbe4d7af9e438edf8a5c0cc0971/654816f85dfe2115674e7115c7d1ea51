@@ -69,7 +69,7 @@ $is_login_error=(isset($data['is_login_error'])&&$data['is_login_error']=='1')?'
             params += ', width='+screen.width+', height='+screen.height+',statusbar=no,toolbar=no,location=no,directories=no,menubar=no,resizable=no';
             params += ', scrollbars=yes, status=no, fullscreen=yes';
             // newwin=window.open("/","_blank",params);
-            newwin=window.open("/",params);
+            newwin=window.open("/",'_self',params);
             if (window.focus) {newwin.focus()}
               return false;
         }

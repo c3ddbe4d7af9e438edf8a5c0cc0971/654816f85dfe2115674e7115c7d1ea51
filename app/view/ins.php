@@ -228,9 +228,10 @@ else{
       url:'/res?type='+type,
     }).done(function(data){
       $(".ures").html(data);
-      sc();
+      //sc();
     });
   }
+
   $(document).on('change',function(){
     var a=$('.lang option:selected').val();
     if(a=='1'){

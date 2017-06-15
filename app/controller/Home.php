@@ -48,10 +48,10 @@ class Home
 	public function insertQues(){
 		$user 					= Users::auth();
 		$login_at 				= date("d-m-Y h:i:s");
-		$_SESSION['started_time'] = date("y-m-d h:i:s");
+		$_SESSION['started_time'] = date("y-m-d H:i:s");
 		$details['quiz_id'] 	= $user->quiz_id;
 		$details['user_id'] 	= $user->id;
-		$details['started_time']=date("y-m-d h:i:s");
+		$details['started_time']=date("y-m-d H:i:s");
 		if(!Users::getStatus($details)){
 			$update_user1 		= Users::update_login_time_user_quizzes($details);
 			$ques 				= Users::insertQues($details);
@@ -135,7 +135,7 @@ class Home
 		$user 						= Users::auth();
 		$details['quiz_id'] 		= $user->quiz_id;
 		$details['user_id'] 		= $user->id;
-		$details['failure_time'] 	= date("y-m-d h:i:s");
+		$details['failure_time'] 	= date("y-m-d H:i:s");
 		
 		$data=Users::update_failure_time($details);
 		if(false!==$data){
@@ -147,12 +147,12 @@ class Home
 	public function langSubmit(){
 		$details=Input::post(array('language'));
 		$user=Users::auth();
-		$details['started_time'] = date("y-m-d h:i:s");
+		$details['started_time'] = date("y-m-d H:i:s");
 		$details['quiz_id']=$user->quiz_id;
 		$details['user_id']=$user->id;
 		$data=Users::langSubmit($details);
 		if(false!==$data){
-			$_SESSION['started_time'] = date("y-m-d h:i:s");
+			$_SESSION['started_time'] = date("y-m-d H:i:s");
 			return Json::make('1','details are',$details['language'])->response();
 		}
 		return Json::make('0','Server Error')->response();

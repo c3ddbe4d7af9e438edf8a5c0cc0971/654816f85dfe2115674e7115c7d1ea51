@@ -20,15 +20,15 @@ class Account
 		$user 					=	Users::login($details);
 		if($user->is_fail==1){
 			$user->duration=$user->duration-$user->prev_duration;
-			$user->started_time=date("y-m-d h:i:s");
-			$_SESSION['started_time'] = date("y-m-d h:i:s");
+			$user->started_time=date("y-m-d H:i:s");
+			$_SESSION['started_time'] = date("y-m-d H:i:s");
 			$details['quiz_id'] 	= $user->quiz_id;
 			$details['user_id'] 	= $user->id;
-			$details['started_time']=date("y-m-d h:i:s");
+			$details['started_time']=date("y-m-d H:i:s");
 			$update_user1 		= Users::update_login_time_user_quizzes($details);
 		}
 		if (sha1($details['password'])==$user->password) {
-			$login_at 			=	date("d-m-Y h:i:s");
+			$login_at 			=	date("y-m-d H:i:s");
 			$update_user 		=	Users::update_login_time($user->id,$login_at);
 			$_SESSION['user'] 	=	json_encode($user);
 		}else{

@@ -8,7 +8,7 @@ $res=$data['res'];
 
 $is_start=$data['user_details']->is_start;
 if($is_start==1){
-  $time=time()-$_SESSION['started_time'];
+  $time=time()-strtotime($_SESSION['started_time']);
 $duration=$user->duration*60;
 $left=($duration-$time);
 }
@@ -181,7 +181,7 @@ function loadUres(type=''){
     url:'/res?type='+type,
   }).done(function(data){
     $(".ures").html(data);
-    sc();
+    //sc();
   });
 }
 
